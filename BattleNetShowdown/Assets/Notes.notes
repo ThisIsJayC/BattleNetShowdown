@@ -1,0 +1,85 @@
+*~BattleNet Showdown~*
+
+
+
+
+
+Battle Tiles 11 types:
+    [√] Normal [ALT+L]
+    [√] Cracked
+    [ ] Broken
+    [ ] Hole
+    [ ] Grass
+    [ ] Sand
+    [ ] Metal
+    [ ] Ice
+    [ ] Poison
+    [ ] Lava
+    [ ] Holy
+
+
+ 
+
+    Can't call them Net Navis. Use the last half of the word. Digi-Gators
+    "Protecting you from the viruses on the Net
+    The Gators"
+    Digi-Gators is really good
+    better than Internet Explorers for sure - JGo
+
+
+
+! Menu !
+/root/
++> DIR (decks) 
+  +> C:\
+  +> D:\
++> USR (profile) 
++> LIB (library of cards) 
++> OPT (Options)
+  +>VID (video)
+  +>AUD / MUS / SND (sound)
+  +>USB (Controller)
+
+
+
+
+
+
+
+    Links to other.notes files. Cmd-click to open the notes in another tab.
+
+TODO:
+[ ] Create a checklist item with Cmd-L
+[√] Mark it as complete by hitting Cmd-L again
+[x] Or, cancel it out by hitting Cmd-L a third time
+
+Unordered list:
+- item 1
+- item 2
+- item 3
+- IMPORTANT: item 4
+
+Ordered list:
+1. item 1
+2. item 2
+3. item 3
+
+-= Special Heading 1 =-
+
+== Special Heading 2 ==
+
+
+[javascript]
+function() {
+  console.log("nice syntax highlighting!");
+}
+[end]
+
+Regular sentence with a #tag# and a "double quote" and `backtick quote`.
+
+---> Arrow
+===> Double Arrow
+*Emphasis* for word between asterisks.
+! Critical ! marker for something really important.
+(parenthetical syntax coloring)
+// Comment
