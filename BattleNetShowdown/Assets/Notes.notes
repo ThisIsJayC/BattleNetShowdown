@@ -1,12 +1,11 @@
 *~BattleNet Showdown~*
 
 
-
-
-
-Battle Tiles 11 types:
-    [√] Normal [ALT+L]
-    [√] Cracked
+TODO:
+[ ] Redesign Grid
+  [ ]Tile Types 
+    [√] Normal
+    [ ] Cracked
     [ ] Broken
     [ ] Hole
     [ ] Grass
@@ -16,7 +15,21 @@ Battle Tiles 11 types:
     [ ] Poison
     [ ] Lava
     [ ] Holy
-
+    [ ] Spike
+[ ] Enemy
+  [ ] HP bar
+[ ] Player Controller 
+  [ ] Movement
+  [ ] Attacks
+  [ ] Animation
+  [ ] HP bar
+[ ] HUD
+  [ ] Decrypt bar
+[ ] Alt Attacks
+  [ ] Sword
+  [ ] Blast
+  [ ] Shield
+  [ ] Grenade
 
  
 
