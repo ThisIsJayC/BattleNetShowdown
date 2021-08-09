@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttacks : MonoBehaviour
+public class PlayerAnimations : MonoBehaviour
 {
-
-
     [SerializeField]
     private float shotDistance;
 
@@ -33,14 +31,14 @@ public class PlayerAttacks : MonoBehaviour
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
         Debug.DrawRay(transform.position + new Vector3Int(1, 0, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
-        //shootSFX.Play();
+        shootSFX.Play();
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3Int(1, 0, 0), transform.TransformDirection(Vector2.right), shotDistance);
 
         if(hit)
         {
             Debug.Log("Hit Something : " + hit.collider.name);
             hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-           // hitSound.Play();
+            hitSound.Play();
         }
     }
 
@@ -48,18 +46,17 @@ public class PlayerAttacks : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         //Buster Attack
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.N))
             Shoot();
-        if(Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.N))
             this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
 
         //Chip Attack
-        if(Input.GetKeyDown(KeyCode.RightAlt))
+        if(Input.GetKeyDown(KeyCode.M))
             Slash();
-        if(Input.GetKeyUp(KeyCode.RightAlt))
+        if(Input.GetKeyUp(KeyCode.M))
             this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
     }
 }
