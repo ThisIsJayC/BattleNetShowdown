@@ -14,6 +14,8 @@ public class GridManager : MonoBehaviour
     //[SerializeField]
     int vertical, horizontal, Columns, Rows;
     // Start is called before the first frame update
+
+    /*
     void Start()
     {
         vertical = (int)Camera.main.orthographicSize;
@@ -52,5 +54,5 @@ public class GridManager : MonoBehaviour
         {
             s.sprite = blue;
         }
-    }
+    }*/
 }
