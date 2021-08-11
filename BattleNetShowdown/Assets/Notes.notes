@@ -3,6 +3,9 @@
 
 TODO:
 [ ] Redesign Grid
+  [ ] Render Grid
+    [ ] Prevent player from walking off tiles
+    [ ] Prevent player from walking on enemy tiles
   [ ]Tile Types 
     [√] Normal
     [ ] Cracked
@@ -21,6 +24,7 @@ TODO:
 [ ] Player Controller 
   [ ] Movement
   [ ] Attacks
+    [ ] Fix Hitbox
   [ ] Animation
   [ ] HP bar
 [ ] HUD
@@ -33,16 +37,17 @@ TODO:
 
  
 
-    Can't call them Net Navis. Use the last half of the word. Digi-Gators
     "Protecting you from the viruses on the Net
     The Gators"
     Digi-Gators is really good
     better than Internet Explorers for sure - JGo
 
+    Maybe could call them NetSpace Navi-Gators
 
 
 ! Menu !
 /root/
++> EXE (Battle)
 +> DIR (decks) 
   +> C:\
   +> D:\
@@ -54,7 +59,7 @@ TODO:
   +>USB (Controller)
 
 
-
+Main character name: LMYT (Limit)?
 
 
 
