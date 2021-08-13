@@ -7,9 +7,9 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField]
     private float shotDistance;
 
-    public AudioSource shootSFX, slashSFX, hitSound;
+    public AudioSource shootSFX, slashSFX, hitSFX, punchSFX;
     
-    public Sprite idleSprite, shootingSprite, attackSprite;
+    public Sprite idleSprite, shootingSprite, slashSprite, punchSprite;
 
   void Shoot()
     {
@@ -18,50 +18,60 @@ public class PlayerAnimations : MonoBehaviour
         shootSFX.Play();
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
 
+        //TODO: Add small hit particle animation
         if(hit)
         {
             Debug.Log("Hit Something : " + hit.collider.name);
             hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            hitSound.Play();
+            hitSFX.Play();
         }
     }
-    void Slash()
+    void Punch()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
-        slashSFX.Play();
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
+        punchSFX.Play();
 
-        //TODO: clean up length and position
-        Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * .45f, Color.red, .5f);
+        //TODO: Add punch animation
+        Debug.DrawRay(transform.position + new Vector3(0.75f, -0.5f, 0), transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), .45f);
 
         if(hit)
         {
             Debug.Log("Hit Something : " + hit.collider.name);
             hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            hitSound.Play();
+            //TODO: Check if enemy is at back edge of their set of squares
+            //Knocks enemy back 1 square
+            hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
+            hitSFX.Play();
         }   
     }
 
-    void Swipe()
+    void Slash()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = slashSprite;
         slashSFX.Play();
 
-        //TODO: clean up length and position
-        Debug.DrawRay(transform.position + new Vector3(1, -1.5f, 0), transform.TransformDirection(Vector2.up) * 1.95f, Color.red, .5f);
+        //TODO: Add slash animation
+        Debug.DrawRay(transform.position + new Vector3(1, -1.5f, 0), transform.TransformDirection(Vector2.up) * 2, Color.red, .5f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -1.5f, 0), transform.TransformDirection(Vector2.up), 1.95f);
 
         if(hit)
         {
             Debug.Log("Hit Something : " + hit.collider.name);
             hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            hitSound.Play();
+            hitSFX.Play();
         }
     }
 
     //Player controls
     void Update()
     {        
+        //Punch Attack
+        if(Input.GetKeyDown(KeyCode.M))
+            Punch();
+        if(Input.GetKeyUp(KeyCode.M))
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
+
         //Shoot Attack
         if(Input.GetKeyDown(KeyCode.N))
             Shoot();
@@ -69,14 +79,8 @@ public class PlayerAnimations : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
 
         //Slash Attack
-        if(Input.GetKeyDown(KeyCode.M))
-            Slash();
-        if(Input.GetKeyUp(KeyCode.M))
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
-
-        //Swipe Attack
         if(Input.GetKeyDown(KeyCode.B))
-            Swipe();
+            Slash();
         if(Input.GetKeyUp(KeyCode.B))
             this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
     }

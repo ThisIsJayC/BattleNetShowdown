@@ -4,10 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+
+
         {
             "name": "Unity Editor",
             "type": "unity",
-            "path": "/D:/Program Files (SSD)/Unity/BattleNet Showdown/BattleNetShowdown/Library/EditorInstance.json",
+            "path": "C:/Users/Jason/Documents/GitHub/BattleNetShowdown/BattleNetShowdown/Library/EditorInstance.json",
             "request": "launch"
         },
         {

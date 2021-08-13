@@ -12,10 +12,6 @@ public class PlayerMovementNew : MonoBehaviour
 
     public AudioSource stepSound;
 
-/*
-    So far so good btw
-*/
-
     // Update is called once per frame
     void Update()
     {
@@ -27,7 +23,6 @@ public class PlayerMovementNew : MonoBehaviour
             StartCoroutine(MovePlayer(Vector3.down));
         if(Input.GetKeyDown(KeyCode.D) && !isMoving)
             StartCoroutine(MovePlayer(Vector3.right));
-  
     }
 
 

@@ -24,16 +24,19 @@ TODO:
 [ ] Player Controller 
   [ ] Movement
   [ ] Attacks
-    [ ] Fix Hitbox
+    [√] Fix Hitbox
   [ ] Animation
   [ ] HP bar
 [ ] HUD
   [ ] Decrypt bar
 [ ] Alt Attacks
-  [ ] Sword
   [ ] Blast
-  [ ] Shield
   [ ] Grenade
+  [ ] Punch
+  [ ] Shield
+  [ ] Sword
+  
+
 
  
 
