@@ -12,6 +12,7 @@ public class PlayerAnimations : MonoBehaviour
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite;
 
 
+
     void Punch()
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
@@ -25,9 +26,12 @@ public class PlayerAnimations : MonoBehaviour
         {
             Debug.Log("Hit Something : " + hit.collider.name);
             hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            //TODO: Check if enemy is at back edge of their set of squares
+
             //Knocks enemy back 1 square
-            hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
+            if(hit.transform.position.x != 2.5) //If enemy is at the end of the square, it will not push them back off of the battle grid.
+            {
+                hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
+            }
             hitSFX.Play();
         }   
     }
