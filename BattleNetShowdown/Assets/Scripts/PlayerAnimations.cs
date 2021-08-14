@@ -13,6 +13,8 @@ public class PlayerAnimations : MonoBehaviour
     
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
 
+    
+
     void Hit(RaycastHit2D hit)
     {
         Debug.Log("Hit Something : " + hit.collider.name);
@@ -25,13 +27,14 @@ public class PlayerAnimations : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
         throwSFX.Play();
 
+        Vector3 targetLocation = transform.position + new Vector3(3, -0.5f, 0);
 
-        
         //TODO: Add throw animation
 
         Debug.DrawRay(transform.position + new Vector3(2.75f, -0.5f, 0f), transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
-        StartCoroutine(Wait(2));
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(3f, -0.5f, 0f), transform.TransformDirection(Vector2.right), .45f);
+        StartCoroutine(Wait(2)); 
+        //This is not doing what I thought it would. It does count 2 realtime seconds but it instantly is checking for collision
+        RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.right), .45f);
 
         //TODO: Add delay to damage check. This allows for projectile travel time
         //Hits an enemy 3 squares away
