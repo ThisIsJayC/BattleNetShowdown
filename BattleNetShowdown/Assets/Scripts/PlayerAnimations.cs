@@ -13,6 +13,12 @@ public class PlayerAnimations : MonoBehaviour
     
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
 
+    void Hit(RaycastHit2D hit)
+    {
+        Debug.Log("Hit Something : " + hit.collider.name);
+        hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        hitSFX.Play();
+    }   
 
     void Lob()
     {
@@ -27,9 +33,7 @@ public class PlayerAnimations : MonoBehaviour
         //Hits an enemy 3 squares away
         if(hit)
         {
-            Debug.Log("Hit Something : " + hit.collider.name);
-            hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            hitSFX.Play();
+            Hit(hit);
         }   
     }
 
@@ -44,15 +48,12 @@ public class PlayerAnimations : MonoBehaviour
 
         if(hit)
         {
-            Debug.Log("Hit Something : " + hit.collider.name);
-            hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-
+            Hit(hit);
             //Knocks enemy back 1 square
             if(hit.transform.position.x != 2.5) //If enemy is at the end of the square, it will not push them back off of the battle grid.
             {
                 hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
             }
-            hitSFX.Play();
         }   
     }
     
@@ -66,10 +67,8 @@ public class PlayerAnimations : MonoBehaviour
         //TODO: Add small hit particle animation
         if(hit)
         {
-            Debug.Log("Hit Something : " + hit.collider.name);
-            hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            hitSFX.Play();
-        }
+            Hit(hit);
+        }  
     }
 
     void Slash()
@@ -83,10 +82,8 @@ public class PlayerAnimations : MonoBehaviour
 
         if(hit)
         {
-            Debug.Log("Hit Something : " + hit.collider.name);
-            hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            hitSFX.Play();
-        }
+            Hit(hit);
+        }  
     }
 
     //Player controls
