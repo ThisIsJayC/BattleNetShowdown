@@ -11,21 +11,7 @@ public class PlayerAnimations : MonoBehaviour
     
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite;
 
-  void Shoot()
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
-        Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
-        shootSFX.Play();
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
 
-        //TODO: Add small hit particle animation
-        if(hit)
-        {
-            Debug.Log("Hit Something : " + hit.collider.name);
-            hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            hitSFX.Play();
-        }
-    }
     void Punch()
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
@@ -44,6 +30,22 @@ public class PlayerAnimations : MonoBehaviour
             hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
             hitSFX.Play();
         }   
+    }
+    
+    void Shoot()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
+        Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
+        shootSFX.Play();
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
+
+        //TODO: Add small hit particle animation
+        if(hit)
+        {
+            Debug.Log("Hit Something : " + hit.collider.name);
+            hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+            hitSFX.Play();
+        }
     }
 
     void Slash()
