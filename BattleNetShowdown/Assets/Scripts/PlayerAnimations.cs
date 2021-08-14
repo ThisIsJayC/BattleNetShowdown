@@ -7,11 +7,31 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField]
     private float shotDistance;
 
-    public AudioSource shootSFX, slashSFX, hitSFX, punchSFX;
+
+    //TODO: reorganize these to be in alphabetical order
+    public AudioSource shootSFX, slashSFX, hitSFX, punchSFX, throwSFX;
     
-    public Sprite idleSprite, shootingSprite, slashSprite, punchSprite;
+    public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
 
 
+    void Lob()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
+        throwSFX.Play();
+
+        //TODO: Add throw animation
+        Debug.DrawRay(transform.position + new Vector3(2.75f, -0.5f, 0f), transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(3f, -0.5f, 0f), transform.TransformDirection(Vector2.right), .45f);
+
+        //TODO: Add dely to damage check. This allows for projectile travel time
+        //Hits an enemy 3 squares away
+        if(hit)
+        {
+            Debug.Log("Hit Something : " + hit.collider.name);
+            hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+            hitSFX.Play();
+        }   
+    }
 
     void Punch()
     {
@@ -72,6 +92,12 @@ public class PlayerAnimations : MonoBehaviour
     //Player controls
     void Update()
     {        
+        //Lob Attack
+        if(Input.GetKeyDown(KeyCode.V))
+            Lob();
+        if(Input.GetKeyUp(KeyCode.V))
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
+
         //Punch Attack
         if(Input.GetKeyDown(KeyCode.M))
             Punch();
