@@ -25,11 +25,15 @@ public class PlayerAnimations : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
         throwSFX.Play();
 
+
+        
         //TODO: Add throw animation
+
         Debug.DrawRay(transform.position + new Vector3(2.75f, -0.5f, 0f), transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
+        StartCoroutine(Wait(2));
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(3f, -0.5f, 0f), transform.TransformDirection(Vector2.right), .45f);
 
-        //TODO: Add dely to damage check. This allows for projectile travel time
+        //TODO: Add delay to damage check. This allows for projectile travel time
         //Hits an enemy 3 squares away
         if(hit)
         {
@@ -112,5 +116,11 @@ public class PlayerAnimations : MonoBehaviour
             Slash();
         if(Input.GetKeyUp(KeyCode.B))
             this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
+    }
+    
+    IEnumerator Wait(int s)
+    {
+        yield return new WaitForSeconds(s);
+        Debug.Log("Waited for " + s + " second(s)");
     }
 }

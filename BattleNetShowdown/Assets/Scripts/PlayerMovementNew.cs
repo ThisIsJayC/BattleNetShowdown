@@ -42,6 +42,6 @@ public class PlayerMovementNew : MonoBehaviour
         transform.position = targetPos;
         stepSound.Play();
         isMoving = false;
-        Debug.Log("Player moved : " + transform.position);
+        //Debug.Log("Player moved : " + transform.position);
     }
 }
