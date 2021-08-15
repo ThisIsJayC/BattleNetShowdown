@@ -7,13 +7,10 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField]
     private float shotDistance;
 
-
     //TODO: reorganize these to be in alphabetical order
     public AudioSource shootSFX, slashSFX, hitSFX, punchSFX, throwSFX;
     
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
-
-    
 
     void Hit(RaycastHit2D hit)
     {
@@ -24,24 +21,28 @@ public class PlayerAnimations : MonoBehaviour
 
     void Lob()
     {
+        //TODO: Add throw animation
         this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
         throwSFX.Play();
 
+        //Destination, 3 squares ahead
         Vector3 targetLocation = transform.position + new Vector3(3, -0.5f, 0);
 
-        //TODO: Add throw animation
+        //Hits an enemy 3 squares away, after a 2 second delay
+        StartCoroutine(LobWait(2.0f, targetLocation));
 
-        Debug.DrawRay(transform.position + new Vector3(2.75f, -0.5f, 0f), transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
-        StartCoroutine(Wait(2)); 
-        //This is not doing what I thought it would. It does count 2 realtime seconds but it instantly is checking for collision
-        RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.right), .45f);
-
-        //TODO: Add delay to damage check. This allows for projectile travel time
-        //Hits an enemy 3 squares away
-        if(hit)
-        {
-            Hit(hit);
-        }   
+        IEnumerator LobWait(float s, Vector3 targetLocation)
+        {   
+            yield return new WaitForSeconds(s);
+            //Purely for debugging purposes. Can see the target location 3 squares ahead
+            Debug.DrawRay(targetLocation, transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
+            
+            RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.right), .45f);
+            if (hit)
+            {
+                Hit(hit);
+            }
+        }
     }
 
     void Punch()
@@ -119,11 +120,5 @@ public class PlayerAnimations : MonoBehaviour
             Slash();
         if(Input.GetKeyUp(KeyCode.B))
             this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
-    }
-    
-    IEnumerator Wait(int s)
-    {
-        yield return new WaitForSeconds(s);
-        Debug.Log("Waited for " + s + " second(s)");
     }
 }

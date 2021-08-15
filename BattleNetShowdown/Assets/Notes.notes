@@ -23,6 +23,7 @@ TODO:
   [ ] HP bar
 [ ] Player Controller 
   [ ] Movement
+    [ ] 2D array (Thanks Alwin)
   [ ] Attacks
     [√] Fix Hitbox
   [ ] Animation
