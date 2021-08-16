@@ -20,22 +20,31 @@ TODO:
     [ ] Holy
     [ ] Spike
 [ ] Enemy
-  [ ] HP bar
+  [√] HP bar
+  [ ] Player attacks affect the enemy HP total
+  [ ] Clean up looks of HP bar
 [ ] Player Controller 
   [ ] Movement
     [ ] 2D array (Thanks Alwin)
   [ ] Attacks
     [√] Fix Hitbox
+    [ ] Assign damage values to attacks
+    [ ] Heal
   [ ] Animation
   [ ] HP bar
 [ ] HUD
   [ ] Decrypt bar
+    [ ] Fill up
+      [ ] Faster fill up
+      [ ] Slower fill up
+      [ ] Instant fill up
+    [ ] Change animation once full
 [ ] Alt Attacks
-  [ ] Blast
-  [ ] Grenade
-  [ ] Punch
+  [*] Blast
+  [*] Grenade
+  [*] Punch
   [ ] Shield
-  [ ] Sword
+  [*] Sword
   
 
 
