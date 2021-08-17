@@ -26,10 +26,10 @@ public class PlayerAnimations : MonoBehaviour
         throwSFX.Play();
 
         //Destination, 3 squares ahead
-        Vector3 targetLocation = transform.position + new Vector3(3, -0.5f, 0);
+        Vector3 targetLocation = transform.position + new Vector3(2.75f, -0.5f, 0);
 
         //Hits an enemy 3 squares away, after a 2 second delay
-        StartCoroutine(LobWait(2.0f, targetLocation));
+        StartCoroutine(LobWait(1.0f, targetLocation));
 
         IEnumerator LobWait(float s, Vector3 targetLocation)
         {   
@@ -37,7 +37,7 @@ public class PlayerAnimations : MonoBehaviour
             //Purely for debugging purposes. Can see the target location 3 squares ahead
             Debug.DrawRay(targetLocation, transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
             
-            RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.right), .45f);
+            RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.right), .5f);
             if (hit)
             {
                 Hit(hit);

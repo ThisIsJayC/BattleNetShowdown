@@ -10,9 +10,16 @@ public class GridManager : MonoBehaviour
 
     public float[,] Grid;
 
+    public AudioSource battleMusic;
+
+    void Start() 
+    {
+        //Starts the Battle Theme
+        //battleMusic.Play();     
+    }
 
     //[SerializeField]
-    int vertical, horizontal, Columns, Rows;
+    //int vertical, horizontal, Columns, Rows;
     // Start is called before the first frame update
 
     /*
@@ -55,4 +62,6 @@ public class GridManager : MonoBehaviour
             s.sprite = blue;
         }
     }*/
+
+
 }

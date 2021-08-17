@@ -12,7 +12,7 @@ public class EnemyHP : MonoBehaviour
     
     public AudioSource enemyHitSFX;
 
-    public int damage = 200;// <------------------
+    public int damage;
     public void TakeDamage(int damage)
     {
         //Calculate damage
@@ -27,6 +27,7 @@ public class EnemyHP : MonoBehaviour
             enemyHitSFX = GetComponent<AudioSource>();
             enemyHitSFX.Play();
             //Deletes the game object too fast. Doesn't even play the sound :[
+            //transform.parent.gameObject.SetActive(false);    
             //Destroy(transform.parent.gameObject);
         }  
     }

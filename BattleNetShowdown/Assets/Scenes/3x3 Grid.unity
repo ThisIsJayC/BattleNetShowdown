@@ -2045,6 +2045,7 @@ MonoBehaviour:
   red: {fileID: 21300000, guid: e72a477b26714c742b1fb8ae31ad7aa7, type: 3}
   blue: {fileID: 21300000, guid: 72d4ff6aa10142e40876c4cd5b9400ec, type: 3}
   sprite: {fileID: 0}
+  battleMusic: {fileID: 1586427911}
 --- !u!4 &1586427907
 Transform:
   m_ObjectHideFlags: 0
@@ -2142,11 +2143,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586427905}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3a097fdd38f272e4793c02eebc0ce19d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.122
   m_Pitch: 1
   Loop: 0
