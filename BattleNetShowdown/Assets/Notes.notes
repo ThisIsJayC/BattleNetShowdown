@@ -7,7 +7,7 @@ TODO:
     [ ] Prevent player from walking off tiles
     [ ] Prevent player from walking on enemy tiles
   [ ]Tile Types 
-    [√] Normal
+    [*] Normal
     [ ] Cracked
     [ ] Broken
     [ ] Hole
@@ -20,7 +20,7 @@ TODO:
     [ ] Holy
     [ ] Spike
 [ ] Enemy
-  [√] HP bar
+  [*] HP bar
   [ ] Player attacks affect the enemy HP total
   [ ] Clean up looks of HP bar
 [ ] Player Controller 
@@ -61,14 +61,18 @@ TODO:
 ! Menu !
 /root/
 +> EXE (Battle)
-+> DIR (decks) 
++> DIR (decks. Maybe STK for Stack?) 
   +> C:\
   +> D:\
++> MOD (character modifications [HP up, ATK up, DEF up, etc.])
 +> USR (profile) 
 +> LIB (library of cards) 
++> BUY (purchase new cards)
 +> OPT (Options)
   +>VID (video)
-  +>AUD / MUS / SND (sound)
+  +>AUD (sound)
+    +> MUS (music)
+    +> SFX (sound effects)
   +>USB (Controller)
 
 
