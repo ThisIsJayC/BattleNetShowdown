@@ -18,7 +18,7 @@ public class DecryptBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        decryptSlider.value = 90; //TODO: set the back to 0
+        decryptSlider.value = 0; //TODO: set the back to 0
     }
 
     // Update is called once per frame
@@ -35,7 +35,6 @@ public class DecryptBar : MonoBehaviour
             fullDecryptBarChime.Play();
             fullbar = true;
         }
-
 
         //Option A: Color cycle
         // if (decryptSlider.value == 100)
