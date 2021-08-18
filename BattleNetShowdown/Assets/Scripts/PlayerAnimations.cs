@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//!!! TODO: update all sprite calls !!!
+
+
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField]
@@ -11,6 +14,9 @@ public class PlayerAnimations : MonoBehaviour
     public AudioSource shootSFX, slashSFX, hitSFX, punchSFX, throwSFX;
     
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
+    //TODO: Load these from the Resources folder
+
+    public Sprite punchAttackSprite;
 
     void Hit(RaycastHit2D hit)
     {
@@ -22,7 +28,13 @@ public class PlayerAnimations : MonoBehaviour
     void Lob()
     {
         //TODO: Add throw animation
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
+        
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<SpriteRenderer>("Lob").sprite;
+
+        //old method
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
+
+
         throwSFX.Play();
 
         //Destination, 3 squares ahead
@@ -53,6 +65,8 @@ public class PlayerAnimations : MonoBehaviour
         //TODO: Add punch animation
         Debug.DrawRay(transform.position + new Vector3(0.75f, -0.5f, 0), transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), .45f);
+
+        //TODO: call the punchAttackSprite 1 square ahead of the player, then destoy it after .5 seconds
 
         if(hit)
         {
