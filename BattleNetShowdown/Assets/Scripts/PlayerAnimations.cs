@@ -12,7 +12,7 @@ public class PlayerAnimations : MonoBehaviour
 
     //TODO: reorganize these to be in alphabetical order
     public AudioSource shootSFX, slashSFX, hitSFX, punchSFX, throwSFX;
-    
+
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
     //TODO: Load these from the Resources folder
 
@@ -23,12 +23,16 @@ public class PlayerAnimations : MonoBehaviour
         Debug.Log("Hit Something : " + hit.collider.name);
         hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         hitSFX.Play();
-    }   
+    }
 
-    void Lob()
+    public void Idle()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+    }
+    public void Lob()
     {
         //TODO: Add throw animation
-        
+
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<SpriteRenderer>("Lob").sprite;
 
         //old method
@@ -44,11 +48,11 @@ public class PlayerAnimations : MonoBehaviour
         StartCoroutine(LobWait(1.0f, targetLocation));
 
         IEnumerator LobWait(float s, Vector3 targetLocation)
-        {   
+        {
             yield return new WaitForSeconds(s);
             //Purely for debugging purposes. Can see the target location 3 squares ahead
             Debug.DrawRay(targetLocation, transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
-            
+
             RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.right), .5f);
             if (hit)
             {
@@ -57,7 +61,7 @@ public class PlayerAnimations : MonoBehaviour
         }
     }
 
-    void Punch()
+    public void Punch()
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
         punchSFX.Play();
@@ -76,10 +80,10 @@ public class PlayerAnimations : MonoBehaviour
             {
                 hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
             }
-        }   
+        }
     }
-    
-    void Shoot()
+
+    public void Shoot()
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
         Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
@@ -90,10 +94,10 @@ public class PlayerAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
-        }  
+        }
     }
 
-    void Slash()
+    public void Slash()
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = slashSprite;
         slashSFX.Play();
@@ -105,34 +109,34 @@ public class PlayerAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
-        }  
+        }
     }
 
     //Player controls
     void Update()
-    {        
+    {
         //Lob Attack
         if(Input.GetKeyDown(KeyCode.V))
             Lob();
         if(Input.GetKeyUp(KeyCode.V))
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
+            Idle();
 
         //Punch Attack
         if(Input.GetKeyDown(KeyCode.M))
             Punch();
         if(Input.GetKeyUp(KeyCode.M))
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
+            Idle();
 
         //Shoot Attack
         if(Input.GetKeyDown(KeyCode.N))
             Shoot();
         if(Input.GetKeyUp(KeyCode.N))
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+            Idle();
 
         //Slash Attack
         if(Input.GetKeyDown(KeyCode.B))
             Slash();
         if(Input.GetKeyUp(KeyCode.B))
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;  
+            Idle();
     }
 }
