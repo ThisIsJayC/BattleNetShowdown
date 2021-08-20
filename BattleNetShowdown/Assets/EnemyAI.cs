@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
             {
                 yield return new WaitForSeconds(s);
                 //TODO: Figure out why this doesn't end after 2 seconds.
-                //It repeats for 123 frams.
+                //It repeats for 123 frames.
                 Debug.Log("Waited 2 seconds");
                 transform.position = targetLocation;
 
