@@ -94,6 +94,9 @@ public class PlayerAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
+
+            gameObject.GetComponent<EnemyHP>().TakeDamage(10);
+            //EnemyHP.TakeDamage(10);
         }
     }
 
