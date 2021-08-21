@@ -17,7 +17,10 @@ public class EnemyHP : MonoBehaviour
         //Calculate damage
         enemyHP = enemyHP - damageTaken;
 
+
         Debug.Log(transform.parent.name + " took " + damageTaken + " damage");
+
+
 
         //Deletes the parent object when the HP reaches 0
         if (enemyHP <= 0)
@@ -28,6 +31,7 @@ public class EnemyHP : MonoBehaviour
             //Deletes the game object too fast. Doesn't even play the sound :[
             //transform.parent.gameObject.SetActive(false);
             //Destroy(transform.parent.gameObject);
+            enemyHP = 0;
         }
     }
 
@@ -40,10 +44,11 @@ public class EnemyHP : MonoBehaviour
 
     void Update()
     {
+        enemyHPTextbox.text = enemyHP.ToString();
         if(Input.GetKeyDown(KeyCode.Space))
         {
-        TakeDamage(damage);
-        enemyHPTextbox.text = enemyHP.ToString();
+            enemyHP += 500;
+            //enemyHPTextbox.text = enemyHP.ToString();
         }
     }
 }

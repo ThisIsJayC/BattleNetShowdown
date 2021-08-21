@@ -1596,6 +1596,7 @@ MonoBehaviour:
   punchSprite: {fileID: 21300000, guid: b966e6517f8fd534fb6b043cc2eac49f, type: 3}
   throwSprite: {fileID: 7482667652216324306, guid: 2ef86704066f81e45ae5680897aafc00, type: 3}
   punchAttackSprite: {fileID: 0}
+  enemyHP: {fileID: 0}
 --- !u!82 &810211399
 AudioSource:
   m_ObjectHideFlags: 0
