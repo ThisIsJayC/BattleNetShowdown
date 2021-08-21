@@ -18,6 +18,15 @@ public class PlayerAnimations : MonoBehaviour
 
     public Sprite punchAttackSprite;
 
+    [SerializeField]
+    private EnemyHP enemyHP;
+
+
+    void Start()
+    {
+        enemyHP = FindObjectOfType<EnemyHP>();
+    }
+
     void Hit(RaycastHit2D hit)
     {
         Debug.Log("Hit Something : " + hit.collider.name);
@@ -57,6 +66,7 @@ public class PlayerAnimations : MonoBehaviour
             if (hit)
             {
                 Hit(hit);
+                enemyHP.TakeDamage(50);
             }
         }
     }
@@ -75,6 +85,7 @@ public class PlayerAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
+            enemyHP.TakeDamage(20);
             //Knocks enemy back 1 square
             if(hit.transform.position.x != 2.5) //If enemy is at the end of the square, it will not push them back off of the battle grid.
             {
@@ -95,7 +106,8 @@ public class PlayerAnimations : MonoBehaviour
         {
             Hit(hit);
 
-            gameObject.GetComponent<EnemyHP>().TakeDamage(10);
+            enemyHP.TakeDamage(10);
+            //enemy.GetComponent<EnemyHP>().TakeDamage(10);
             //EnemyHP.TakeDamage(10);
         }
     }
@@ -112,6 +124,7 @@ public class PlayerAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
+            enemyHP.TakeDamage(100);
         }
     }
 
