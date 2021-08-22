@@ -16,32 +16,42 @@ public class PlayerMovementNew : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.W) && !isMoving)
-            StartCoroutine(MovePlayer(Vector3.up));
+            transform.position += Vector3.up;
         if(Input.GetKeyDown(KeyCode.A) && !isMoving)
-            StartCoroutine(MovePlayer(Vector3.left));
+            transform.position += Vector3.left;
         if(Input.GetKeyDown(KeyCode.S) && !isMoving)
-            StartCoroutine(MovePlayer(Vector3.down));
+            transform.position += Vector3.down;
         if(Input.GetKeyDown(KeyCode.D) && !isMoving)
-            StartCoroutine(MovePlayer(Vector3.right));
+            transform.position += Vector3.right;
+
+        // Old way
+        // if(Input.GetKeyDown(KeyCode.W) && !isMoving)
+        //     StartCoroutine(MovePlayer(Vector3.up));
+        // if(Input.GetKeyDown(KeyCode.A) && !isMoving)
+        //     StartCoroutine(MovePlayer(Vector3.left));
+        // if(Input.GetKeyDown(KeyCode.S) && !isMoving)
+        //     StartCoroutine(MovePlayer(Vector3.down));
+        // if(Input.GetKeyDown(KeyCode.D) && !isMoving)
+        //     StartCoroutine(MovePlayer(Vector3.right));
     }
 
+    // Old way
+    // private IEnumerator MovePlayer(Vector3 direction)
+    // {
+    //     isMoving = true;
+    //     float elapsedTime = 0;
+    //     origPos= transform.position;
+    //     targetPos = origPos + direction;
 
-    private IEnumerator MovePlayer(Vector3 direction)
-    {
-        isMoving = true;  
-        float elapsedTime = 0;
-        origPos= transform.position;
-        targetPos = origPos + direction;
-
-        while (elapsedTime < timeToMove)
-        {
-            transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        transform.position = targetPos;
-        stepSound.Play();
-        isMoving = false;
-        //Debug.Log("Player moved : " + transform.position);
-    }
+    //     while (elapsedTime < timeToMove)
+    //     {
+    //         transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
+    //         elapsedTime += Time.deltaTime;
+    //         yield return null;
+    //     }
+    //     transform.position = targetPos;
+    //     stepSound.Play();
+    //     isMoving = false;
+    //     //Debug.Log("Player moved : " + transform.position);
+    //}
 }
