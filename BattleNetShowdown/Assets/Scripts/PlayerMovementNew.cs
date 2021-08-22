@@ -7,51 +7,39 @@ public class PlayerMovementNew : MonoBehaviour
     private bool isMoving; //
     private Vector3 origPos, targetPos; //
 
-    [SerializeField]
-    private float timeToMove;
+    public static double top = -0.5, bottom = -2.5, left = -2.5, right = -0.5;
+
+    // [SerializeField]
+    // private float timeToMove;
 
     public AudioSource stepSound;
+
+
+    void movePlayer(Vector3 direction)
+    {
+        Vector3 proposedNewPosition = transform.position + direction;
+        //Vector3 currentPosition = transform.position;
+          //                      top                            bottom                          left                           right
+         if(proposedNewPosition.y <= top && proposedNewPosition.y >= bottom && proposedNewPosition.x >= left && proposedNewPosition.x <= right)
+            {
+            transform.position += direction;
+            stepSound.Play();
+            }
+    }
+
+//Y < 1 && Y > -1 && X > -1 && X < 1
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W) && !isMoving)
-            transform.position += Vector3.up;
-        if(Input.GetKeyDown(KeyCode.A) && !isMoving)
-            transform.position += Vector3.left;
-        if(Input.GetKeyDown(KeyCode.S) && !isMoving)
-            transform.position += Vector3.down;
-        if(Input.GetKeyDown(KeyCode.D) && !isMoving)
-            transform.position += Vector3.right;
-
-        // Old way
-        // if(Input.GetKeyDown(KeyCode.W) && !isMoving)
-        //     StartCoroutine(MovePlayer(Vector3.up));
-        // if(Input.GetKeyDown(KeyCode.A) && !isMoving)
-        //     StartCoroutine(MovePlayer(Vector3.left));
-        // if(Input.GetKeyDown(KeyCode.S) && !isMoving)
-        //     StartCoroutine(MovePlayer(Vector3.down));
-        // if(Input.GetKeyDown(KeyCode.D) && !isMoving)
-        //     StartCoroutine(MovePlayer(Vector3.right));
+        if(Input.GetKeyDown(KeyCode.W))
+            movePlayer(Vector3.up);
+            // transform.position += Vector3.up;
+        if(Input.GetKeyDown(KeyCode.A))
+            movePlayer(Vector3.left);
+        if(Input.GetKeyDown(KeyCode.S))
+            movePlayer(Vector3.down);
+        if(Input.GetKeyDown(KeyCode.D))
+              movePlayer(Vector3.right);
     }
-
-    // Old way
-    // private IEnumerator MovePlayer(Vector3 direction)
-    // {
-    //     isMoving = true;
-    //     float elapsedTime = 0;
-    //     origPos= transform.position;
-    //     targetPos = origPos + direction;
-
-    //     while (elapsedTime < timeToMove)
-    //     {
-    //         transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
-    //         elapsedTime += Time.deltaTime;
-    //         yield return null;
-    //     }
-    //     transform.position = targetPos;
-    //     stepSound.Play();
-    //     isMoving = false;
-    //     //Debug.Log("Player moved : " + transform.position);
-    //}
 }
