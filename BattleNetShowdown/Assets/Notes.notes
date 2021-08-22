@@ -4,9 +4,9 @@
 TODO:
 [ ] Redesign Grid
   [ ] Render Grid
-    [ ] Prevent player from walking off tiles
-    [ ] Prevent player from walking on enemy tiles
-  [ ]Tile Types 
+    [√] Prevent player from walking off tiles
+    [√] Prevent player from walking on enemy tiles
+  [ ]Tile Types
     [*] Normal
     [ ] Cracked
     [ ] Broken
@@ -20,35 +20,38 @@ TODO:
     [ ] Holy
     [ ] Spike
 [ ] Enemy
-  [*] HP bar
-  [ ] Player attacks affect the enemy HP total
-  [ ] Clean up looks of HP bar
-[ ] Player Controller 
-  [ ] Movement
+  [√] HP bar
+  [√] Fix rudimentary enemy AI
+  [√] Update to Awin's sprite
+  [√] Player attacks affect the enemy HP total
+  [*] Clean up looks of HP bar
+    [ ] Figure out the sorting order for the enemy HP so that it's on top of the enemy sprite
+[ ] Player Controller
+  [*] Movement
     [ ] 2D array (Thanks Alwin)
   [ ] Attacks
     [√] Fix Hitbox
-    [ ] Assign damage values to attacks
+    [√] Assign damage values to attacks
     [ ] Heal
   [ ] Animation
   [ ] HP bar
 [ ] HUD
   [ ] Decrypt bar
-    [ ] Fill up
+    [*] Fill up
       [ ] Faster fill up
       [ ] Slower fill up
       [ ] Instant fill up
-    [ ] Change animation once full
+    [√] Change animation once full
 [ ] Alt Attacks
-  [*] Blast
-  [*] Grenade
-  [*] Punch
+  [√] Blast
+  [√] Grenade
+  [√] Punch
   [ ] Shield
-  [*] Sword
-  
+  [√] Sword
 
 
- 
+
+
 
     "Protecting you from the viruses on the Net
     The Gators"
@@ -61,12 +64,12 @@ TODO:
 ! Menu !
 /root/
 +> EXE (Battle)
-+> DIR (decks DEX?. Maybe STK for Stack?) 
++> DIR (decks DEX?. Maybe STK for Stack?)
   +> C:\
   +> D:\
 +> MOD (character modifications [HP up, ATK up, DEF up, etc.])
-+> USR (profile) 
-+> LIB (library of cards) 
++> USR (profile)
++> LIB (library of cards)
 +> BUY (purchase new cards)
 +> OPT (Options)
   +>VID (video)
