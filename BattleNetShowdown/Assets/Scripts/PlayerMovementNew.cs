@@ -23,7 +23,7 @@ public class PlayerMovementNew : MonoBehaviour
          if(proposedNewPosition.y <= top && proposedNewPosition.y >= bottom && proposedNewPosition.x >= left && proposedNewPosition.x <= right)
             {
             transform.position += direction;
-            stepSound.Play();
+            //stepSound.Play();
             }
     }
 
