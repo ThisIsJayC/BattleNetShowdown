@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class EnemyHP : MonoBehaviour
 {
     public TextMesh enemyHPTextbox;
 
     public int enemyHP, maxHP;
 
-    public AudioSource enemyHitSFX;
+    public AudioSource enemyExplosionSFX;
 
     public int damage;
     public void TakeDamage(int damageTaken)
@@ -26,8 +25,8 @@ public class EnemyHP : MonoBehaviour
         if (enemyHP <= 0)
         {
             Debug.Log("Enemy was destroyed");
-            enemyHitSFX = GetComponent<AudioSource>();
-            enemyHitSFX.Play();
+            enemyExplosionSFX = GetComponent<AudioSource>();
+            enemyExplosionSFX.Play();
             //Deletes the game object too fast. Doesn't even play the sound :[
             //transform.parent.gameObject.SetActive(false);
             //Destroy(transform.parent.gameObject);
