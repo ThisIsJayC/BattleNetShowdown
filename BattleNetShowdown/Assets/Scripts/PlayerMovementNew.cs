@@ -4,30 +4,19 @@ using UnityEngine;
 
 public class PlayerMovementNew : MonoBehaviour
 {
-    private bool isMoving; //
-    private Vector3 origPos, targetPos; //
-
     public static double top = -0.5, bottom = -2.5, left = -2.5, right = -0.5;
 
-    // [SerializeField]
-    // private float timeToMove;
-
     public AudioSource stepSound;
-
 
     void movePlayer(Vector3 direction)
     {
         Vector3 proposedNewPosition = transform.position + direction;
-        //Vector3 currentPosition = transform.position;
-          //                      top                            bottom                          left                           right
          if(proposedNewPosition.y <= top && proposedNewPosition.y >= bottom && proposedNewPosition.x >= left && proposedNewPosition.x <= right)
             {
             transform.position += direction;
-            //stepSound.Play();
+            stepSound.Play();
             }
     }
-
-//Y < 1 && Y > -1 && X > -1 && X < 1
 
     // Update is called once per frame
     void Update()
