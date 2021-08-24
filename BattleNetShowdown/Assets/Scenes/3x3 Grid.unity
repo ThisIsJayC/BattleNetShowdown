@@ -194,7 +194,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &29094488
 MonoBehaviour:
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 5.7
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2587,7 +2587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acbff8ba2a060a4fafd56305162fbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAttack: {fileID: 7482667652216324306, guid: 2ef86704066f81e45ae5680897aafc00, type: 3}
   lobAttackSprite: {fileID: 21300000, guid: 9f88e39e75c9d7ce2b3eceacb1b1cd06, type: 3}
   punchAttackSprite: {fileID: 21300000, guid: 9be28bd7d7a972d78971b70dfcacff05, type: 3}
   slashAttackSprite: {fileID: 21300000, guid: f8bee8ce1107b3da9b170f5aabe77fb0, type: 3}

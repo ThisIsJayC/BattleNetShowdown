@@ -27,7 +27,7 @@ public class DecryptBar : MonoBehaviour
         if(decryptSlider.value < 100)
         {
             //Debug.Log(decryptSlider.value);
-            decryptSlider.value += .05f;
+            decryptSlider.value += .01f;
         }
 
         if(decryptSlider.value == 100 && fullbar == false)
