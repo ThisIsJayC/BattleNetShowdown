@@ -11,7 +11,7 @@ public class DecryptBar : MonoBehaviour
     [SerializeField]
     public AudioSource fullDecryptBarChime;
 
-    private bool fullbar = false;
+    public bool fullbar = false;
     private float glow = 0f;
     private int glowDirection;
 
