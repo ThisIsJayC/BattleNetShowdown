@@ -7,7 +7,7 @@ public class AttackScript : MonoBehaviour
     void Lob()
     {
         gameObject.GetComponent<PlayerAnimations>().Lob();
-        Debug.Log("lob attack used");
+        Debug.Log("Lob attack used");
     }
 
     void Punch()
@@ -28,13 +28,22 @@ public class AttackScript : MonoBehaviour
         Debug.Log("Slash attack used");
     }
 
-    int[] attackArray = new int[] {1, 2, 3, 4, 5, 6};
+    public int[] attackArray = new int[] {1, 2, 3, 4, 5, 6};
     int i = 0;
+
+    private DecryptBar decryptBar;
+
+    void Start()
+    {
+        decryptBar = FindObjectOfType<DecryptBar>();
+        // Set Lob as the first card indicator
+        //gameObject.GetComponent<PlayerAnimations>().Idle();
+    }
     // Update is called once per frame
     void Update()
     {
         //TODO: Update the attack usage so that it's using a queue (FIFO)
-        if(Input.GetKeyDown(KeyCode.RightAlt))
+        if(Input.GetKeyDown(KeyCode.Slash))
             {
                 if(i == attackArray.Length - 1)
                     i = 0;
@@ -54,7 +63,7 @@ public class AttackScript : MonoBehaviour
                     break;
 
                 case 3:
-                    Shoot();
+                    Debug.Log("Nothing happened");
                     break;
 
                 case 4:
@@ -66,9 +75,10 @@ public class AttackScript : MonoBehaviour
                     Debug.Log("You are out of attacks");
                     break;
 
-                case 6: //Resets the DECRYPT bar. Er. Not yet
-                    //gameObject.GetComponent<DecryptBar>().decryptSlider.value = 0f;
-                    //decryptSlider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color
+                case 6: //Resets the DECRYPT bar
+                    Debug.Log("Resetting the DECRYPT bar");
+                    decryptBar.decryptSlider.value = 0;
+                    decryptBar.fullbar = false;
                     break;
 
                 default:
@@ -77,12 +87,9 @@ public class AttackScript : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.RightAlt))
+        if(Input.GetKeyUp(KeyCode.Slash))
         {
             gameObject.GetComponent<PlayerAnimations>().Idle();
-            // gameObject.GetComponent<PlayerAnimations>().Lob();
-            // gameObject.GetComponent.<PlayerAnimations>.sprite =
-            //this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
         }
     }
 }
