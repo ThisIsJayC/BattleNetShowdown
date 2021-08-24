@@ -11,7 +11,7 @@ public class PlayerAnimations : MonoBehaviour
     private float shotDistance;
 
     //TODO: reorganize these to be in alphabetical order
-    public AudioSource shootSFX, slashSFX, hitSFX, punchSFX, throwSFX;
+    public AudioSource shootSFX, slashSFX, hitSFX, punchSFX, throwSFX, missedThrow;
 
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
     //TODO: Load these from the Resources folder
@@ -67,6 +67,10 @@ public class PlayerAnimations : MonoBehaviour
             {
                 Hit(hit);
                 enemyHP.TakeDamage(50);
+            }
+            else
+            {
+                missedThrow.Play();
             }
         }
     }
