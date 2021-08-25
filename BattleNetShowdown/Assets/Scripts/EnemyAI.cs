@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-
     private Vector3 targetLocation = new Vector3(0.5f, -1.5f, 0);
     static bool isMoving = false;
 
@@ -26,17 +19,9 @@ public class EnemyAI : MonoBehaviour
             {
                 isMoving = true;
                 yield return new WaitForSeconds(s);
-                //TODO: Figure out why this doesn't end after 2 seconds.
-                Debug.Log("Waited 2 seconds");
                 transform.position = targetLocation;
-
-                //Does not kick out of the Coroutine
-                StopCoroutine(MoveWait(2.0f, targetLocation));
                 isMoving = false;
             }
         }
-
-
-
     }
 }
