@@ -15,6 +15,11 @@ public class DecryptBar : MonoBehaviour
     private float glow = 0f;
     private int glowDirection;
 
+    //TODO: Fix this calculation
+    //Set the length of each DECRYP round in seconds below:
+    public static float roundLength = 0.30f;
+    private float decryptBarIncrement = roundLength / 60f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +32,7 @@ public class DecryptBar : MonoBehaviour
         if(decryptSlider.value < 100)
         {
             //Debug.Log(decryptSlider.value);
-            decryptSlider.value += .01f;
+            decryptSlider.value += decryptBarIncrement;
         }
 
         if(decryptSlider.value == 100 && fullbar == false)
