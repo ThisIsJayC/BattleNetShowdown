@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//!!! TODO: update all sprite calls !!!
-
-
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField]
     private float shotDistance;
 
-    //TODO: reorganize these to be in alphabetical order
-    public AudioSource shootSFX, slashSFX, hitSFX, punchSFX, throwSFX, missedThrow;
+    public AudioSource hitSFX, missedThrow, punchSFX, shootSFX, slashSFX, throwSFX;
 
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
     //TODO: Load these from the Resources folder
+    //Maybe don't do this. It invloves making everything into a prefab.
 
     public Sprite punchAttackSprite;
 
@@ -42,10 +39,11 @@ public class PlayerAnimations : MonoBehaviour
     {
         //TODO: Add throw animation
 
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<SpriteRenderer>("Lob").sprite;
+        //New method. Requires a prefab
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<SpriteRenderer>("Lob").sprite;
 
-        //old method
-        //this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
+
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
 
 
         throwSFX.Play();
@@ -53,7 +51,7 @@ public class PlayerAnimations : MonoBehaviour
         //Destination, 3 squares ahead
         Vector3 targetLocation = transform.position + new Vector3(2.75f, -0.5f, 0);
 
-        //Hits an enemy 3 squares away, after a 2 second delay
+        //Hits an enemy 3 squares away, after a 1 second delay
         StartCoroutine(LobWait(1.0f, targetLocation));
 
         IEnumerator LobWait(float s, Vector3 targetLocation)
@@ -81,10 +79,9 @@ public class PlayerAnimations : MonoBehaviour
         punchSFX.Play();
 
         //TODO: Add punch animation
+        //TODO: call the punchAttackSprite 1 square ahead of the player, then destoy it after .5 seconds
         Debug.DrawRay(transform.position + new Vector3(0.75f, -0.5f, 0), transform.TransformDirection(Vector2.right) * .5f, Color.red, .5f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), .45f);
-
-        //TODO: call the punchAttackSprite 1 square ahead of the player, then destoy it after .5 seconds
 
         if(hit)
         {
@@ -109,10 +106,7 @@ public class PlayerAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
-
             enemyHP.TakeDamage(10);
-            //enemy.GetComponent<EnemyHP>().TakeDamage(10);
-            //EnemyHP.TakeDamage(10);
         }
     }
 
