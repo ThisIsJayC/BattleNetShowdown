@@ -16,20 +16,23 @@ public class EnemyHP : MonoBehaviour
         //Calculate damage
         enemyHP = enemyHP - damageTaken;
 
-
-        Debug.Log(transform.parent.name + " took " + damageTaken + " damage");
-
-
+        //Debug.Log(transform.parent.name + " took " + damageTaken + " damage");
 
         //Deletes the parent object when the HP reaches 0
         if (enemyHP <= 0)
         {
-            Debug.Log("Enemy was destroyed");
-            enemyExplosionSFX = GetComponent<AudioSource>();
-            enemyExplosionSFX.Play();
-            //Deletes the game object too fast. Doesn't even play the sound :[
-            //transform.parent.gameObject.SetActive(false);
-            //Destroy(transform.parent.gameObject);
+            transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            StartCoroutine(killEnemy());
+            IEnumerator killEnemy ()
+            {
+                Debug.Log("Enemy was destroyed");
+                enemyExplosionSFX = GetComponent<AudioSource>();
+                enemyExplosionSFX.Play();
+
+                yield return new WaitForSeconds(enemyExplosionSFX.clip.length);
+                transform.parent.gameObject.SetActive(false);
+                //Destroy(transform.parent.gameObject); //or just delete it if you really are feeling spicy
+            }
             enemyHP = 0;
         }
     }
@@ -47,7 +50,6 @@ public class EnemyHP : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             enemyHP += 500;
-            //enemyHPTextbox.text = enemyHP.ToString();
         }
     }
 }
