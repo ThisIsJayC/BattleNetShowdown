@@ -32,7 +32,12 @@ public class AttackScript : MonoBehaviour
     int i = 0;
 
 
+        //var dict = new Dictionary<int, action>();
+		// dict.Add(1, Lob);
+		// dict[1]();
+
 // lob punch slash refill
+
 
     private DecryptBar decryptBar;
 
