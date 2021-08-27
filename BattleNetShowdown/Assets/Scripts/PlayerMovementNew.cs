@@ -20,6 +20,9 @@ public class PlayerMovementNew : MonoBehaviour
 
     void Update()
     {
+        // For Joystick movement
+        //transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal")/10, Input.GetAxisRaw("Vertical")/10,0f)) ;
+
         if(Input.GetKeyDown(KeyCode.W))
             movePlayer(Vector3.up);
         if(Input.GetKeyDown(KeyCode.A))

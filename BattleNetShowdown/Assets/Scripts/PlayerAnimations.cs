@@ -130,27 +130,29 @@ public class PlayerAnimations : MonoBehaviour
     void Update()
     {
         //Lob Attack
-        if(Input.GetKeyDown(KeyCode.V))
+        if(Input.GetButtonDown("Fire1"))
             Lob();
-        if(Input.GetKeyUp(KeyCode.V))
+        if(Input.GetKeyDown(KeyCode.V) || Input.GetButtonDown("Fire1"))
+            Lob();
+        if(Input.GetKeyUp(KeyCode.V) || Input.GetButtonUp("Fire1"))
             Idle();
 
         //Punch Attack
-        if(Input.GetKeyDown(KeyCode.M))
+        if(Input.GetKeyDown(KeyCode.M) || Input.GetButtonDown("Fire2"))
             Punch();
-        if(Input.GetKeyUp(KeyCode.M))
+        if(Input.GetKeyUp(KeyCode.M) || Input.GetButtonUp("Fire2"))
             Idle();
 
         //Shoot Attack
-        if(Input.GetKeyDown(KeyCode.N))
+        if(Input.GetKeyDown(KeyCode.N) || Input.GetButtonDown("Fire3"))
             Shoot();
-        if(Input.GetKeyUp(KeyCode.N))
+        if(Input.GetKeyUp(KeyCode.N) || Input.GetButtonUp("Fire3"))
             Idle();
 
         //Slash Attack
-        if(Input.GetKeyDown(KeyCode.B))
+        if(Input.GetKeyDown(KeyCode.B) || Input.GetButtonDown("Fire4"))
             Slash();
-        if(Input.GetKeyUp(KeyCode.B))
+        if(Input.GetKeyUp(KeyCode.B) || Input.GetButtonUp("Fire4"))
             Idle();
     }
 }
