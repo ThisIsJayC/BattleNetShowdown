@@ -16,10 +16,10 @@ public class DecryptBar : MonoBehaviour
     private int glowDirection;
 
     //Set the length of each DECRYPT round in seconds below:
-    public const float originalRoundLength = 15.0f;
+    public const float originalRoundLength = 10f;
     public static float roundLength = originalRoundLength;
 
-    private float decryptBarIncrement = 1 / (roundLength / 100f * 60f);
+    private float decryptBarIncrement = roundLength;
 
     public float timer = 0.0f; //TODO: Remove debugging code
 
@@ -32,7 +32,7 @@ public class DecryptBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        decryptBarIncrement = 1 / (roundLength / 100f * 60f);
+        decryptBarIncrement = (1 / roundLength) / 100f * 45f;
 
         if(decryptSlider.value < 100)
         {
