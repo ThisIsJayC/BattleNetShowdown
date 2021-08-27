@@ -31,10 +31,14 @@ public class AttackScript : MonoBehaviour
     public int[] attackArray = new int[] {1, 2, 3, 4, 5, 6};
     int i = 0;
 
+
+// lob punch slash refill
+
     private DecryptBar decryptBar;
 
     void Start()
     {
+
         decryptBar = FindObjectOfType<DecryptBar>();
         // Set Lob as the first card indicator
         //gameObject.GetComponent<PlayerAnimations>().Idle();
