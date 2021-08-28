@@ -12,10 +12,10 @@ public class GridManager : MonoBehaviour
 
     public AudioSource battleMusic;
 
-    void Start() 
+    void Start()
     {
         //Starts the Battle Theme
-        //battleMusic.Play();     
+        battleMusic.Play();
     }
 
     //[SerializeField]
@@ -50,9 +50,9 @@ public class GridManager : MonoBehaviour
     {
         GameObject g = new GameObject("X: "+x+"Y: "+y);
         g.transform.position = new Vector3(x - (horizontal - 0.5f), y - (vertical - 0.5f));
-            
+
         var s = g.AddComponent<SpriteRenderer>();
-        
+
         if(x < 3)
         {
             s.sprite = red;
