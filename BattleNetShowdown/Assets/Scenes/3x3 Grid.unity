@@ -342,6 +342,7 @@ MonoBehaviour:
   decryptSlider: {fileID: 45819065}
   fullDecryptBarChime: {fileID: 45819067}
   fullbar: 0
+  timer: 0
 --- !u!82 &45819067
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1587,12 +1588,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDistance: 4
+  hitSFX: {fileID: 810211397}
+  missedThrow: {fileID: 810211404}
+  punchSFX: {fileID: 810211401}
   shootSFX: {fileID: 810211400}
   slashSFX: {fileID: 810211399}
-  hitSFX: {fileID: 810211397}
-  punchSFX: {fileID: 810211401}
   throwSFX: {fileID: 810211402}
-  missedThrow: {fileID: 810211404}
   idleSprite: {fileID: 21300000, guid: 400f564540338804d8c52a3319e5cabb, type: 3}
   shootingSprite: {fileID: 21300000, guid: c9d030fae41df044695846eaab8eb7b5, type: 3}
   slashSprite: {fileID: 21300000, guid: 91ee02027b697f44f958a9e7e89ec72a, type: 3}
@@ -2328,8 +2329,9 @@ MonoBehaviour:
   enemyHPTextbox: {fileID: 1182736597}
   enemyHP: 400
   maxHP: 1800
-  enemyExplosionSFX: {fileID: 0}
   damage: 200
+  enemyExplosionSFX: {fileID: 0}
+  enemyIsDead: 0
 --- !u!82 &1182736600
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3010,7 +3012,7 @@ AudioSource:
   m_Volume: 0.122
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -3567,3 +3569,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cf324f64da4d690bb24fb88cc33edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
+  isMoving: 0

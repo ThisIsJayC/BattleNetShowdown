@@ -6,11 +6,11 @@ public class EnemyHP : MonoBehaviour
 {
     public TextMesh enemyHPTextbox;
 
-    public int enemyHP, maxHP;
+    public int enemyHP, maxHP, damage;
 
     public AudioSource enemyExplosionSFX;
 
-    public int damage;
+    public bool enemyIsDead;
     public void TakeDamage(int damageTaken)
     {
         //Calculate damage
@@ -26,6 +26,9 @@ public class EnemyHP : MonoBehaviour
             IEnumerator killEnemy ()
             {
                 Debug.Log("Enemy was destroyed");
+                SetEnemyStatus(true);
+                Debug.Log(GetEnemyStatus());
+                Debug.Log("Enemy status IS above this :]");
                 enemyExplosionSFX = GetComponent<AudioSource>();
                 enemyExplosionSFX.Play();
 
@@ -35,6 +38,15 @@ public class EnemyHP : MonoBehaviour
             }
             enemyHP = 0;
         }
+    }
+
+    void SetEnemyStatus(bool trueorfalse)
+    {
+        enemyIsDead = trueorfalse;
+    }
+    public bool GetEnemyStatus()
+    {
+        return enemyIsDead;
     }
 
     void Start()

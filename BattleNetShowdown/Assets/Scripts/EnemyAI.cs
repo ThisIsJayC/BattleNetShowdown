@@ -5,12 +5,14 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     private Vector3 targetLocation = new Vector3(0.5f, -1.5f, 0);
-    static bool isMoving = false;
-
+    public bool isDead = true, isMoving = false;
     // Update is called once per frame
     void Update()
     {
-        if(transform.position != targetLocation && isMoving == false)
+        //isDead = gameObject.GetComponent<EnemyHP>().GetEnemyStatus();
+        //Debug.Log(isDead);
+        //Debug.Log(gameObject.GetComponent<EnemyHP>().GetEnemyStatus());
+        if(transform.position != targetLocation && isMoving == false && isDead == false)
         {
         //Wait 2 seconds and then move to the correct location
         StartCoroutine(MoveWait(2.0f, targetLocation));
