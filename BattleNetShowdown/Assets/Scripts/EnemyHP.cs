@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyHP : MonoBehaviour
 {
     public TextMesh enemyHPTextbox;
@@ -10,7 +11,7 @@ public class EnemyHP : MonoBehaviour
 
     public AudioSource enemyExplosionSFX;
 
-    public bool enemyIsDead;
+    public bool enemyIsDead =false;
     public void TakeDamage(int damageTaken)
     {
         //Calculate damage
@@ -27,8 +28,6 @@ public class EnemyHP : MonoBehaviour
             {
                 Debug.Log("Enemy was destroyed");
                 SetEnemyStatus(true);
-                Debug.Log(GetEnemyStatus());
-                Debug.Log("Enemy status IS above this :]");
                 enemyExplosionSFX = GetComponent<AudioSource>();
                 enemyExplosionSFX.Play();
 
@@ -40,7 +39,7 @@ public class EnemyHP : MonoBehaviour
         }
     }
 
-    void SetEnemyStatus(bool trueorfalse)
+    public void SetEnemyStatus(bool trueorfalse)
     {
         enemyIsDead = trueorfalse;
     }
