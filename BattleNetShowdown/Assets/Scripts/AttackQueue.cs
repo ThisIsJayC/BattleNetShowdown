@@ -27,8 +27,8 @@ public class AttackQueue : MonoBehaviour
     }
 
     List<Action> lst = new List<Action>();
-
-    int i = 0;
+    List<Action> attackQueue = new List<Action>();
+    int i = 0, attackQueueMax = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +36,8 @@ public class AttackQueue : MonoBehaviour
         playerAnimations = FindObjectOfType<PlayerAnimations>();
 
         lst.AddRange(new Action[] { Slash, Lob, Punch });
-        // for (int i = 0; i < lst.Count; i++)
-        // {
-        //     lst[i]();
-        // }
+
+        ShuffleAttacks();
 
         //FindObjectOfType<AttackScript>(Update().attackArrayOfSpritesay[0]);
         this.gameObject.GetComponent<SpriteRenderer>().sprite = lobAttackSprite;
@@ -47,16 +45,35 @@ public class AttackQueue : MonoBehaviour
         // Once the forwards button is pressed, set the next attack sprite (attackArrayOfSpritesay[1])
     }
 
+    void ShuffleAttacks()
+    {
+        int randomNumberOfAttacks = UnityEngine.Random.Range(0, attackQueueMax);
+        attackQueue.Clear();
+        for(int j = 0; j < randomNumberOfAttacks; j++)
+        {
+            int randomNumber = UnityEngine.Random.Range(0, lst.Count);
+            attackQueue.Add(lst[randomNumber]);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.RightAlt))
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = punchAttackSprite;
-            if(i < lst.Capacity - 1)
+            //this.gameObject.GetComponent<SpriteRenderer>().sprite = punchAttackSprite;
+            if(i < attackQueue.Count)
             {
-                lst[i]();
+                Debug.Log("Attack " + (i + 1) + " of " + (attackQueue.Count));
+                attackQueue[i]();
                 i++;
+                return; //Exits the function instead instantly resetting the queue. TODO: make this better
+            }
+            if(i >= attackQueue.Count)
+            {
+                Debug.Log("You're empty. Reseteting to zero");
+                ShuffleAttacks();
+                i = 0;
             }
         }
     }
