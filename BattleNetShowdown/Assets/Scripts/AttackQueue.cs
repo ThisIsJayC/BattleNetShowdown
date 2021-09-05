@@ -10,6 +10,7 @@ public class AttackQueue : MonoBehaviour
 
     private PlayerAnimations playerAnimations;
     private DecryptBar decryptBar;
+    private AttackDB attackDB;
 
     void Slash()
     {
@@ -41,11 +42,12 @@ public class AttackQueue : MonoBehaviour
         ShuffleAttacks();
 
         decryptBar = FindObjectOfType<DecryptBar>();
-
+        attackDB = FindObjectOfType<AttackDB>();
         //FindObjectOfType<AttackScript>(Update().attackArrayOfSpritesay[0]);
         this.gameObject.GetComponent<SpriteRenderer>().sprite = lobAttackSprite;
         // Set the Attack Queue slot (orange square) to be the first item in the queue (attackArrayOfSpritesay[0])
         // Once the forwards button is pressed, set the next attack sprite (attackArrayOfSpritesay[1])
+        //attackDB.Slash();
     }
 
     void ShuffleAttacks()
@@ -57,6 +59,7 @@ public class AttackQueue : MonoBehaviour
             int randomNumber = UnityEngine.Random.Range(0, lst.Count);
             attackQueue.Add(lst[randomNumber]);
         }
+        Debug.Log("You have " + randomNumberOfAttacks + " attacks.");
     }
 
     // Update is called once per frame
@@ -86,6 +89,7 @@ public class AttackQueue : MonoBehaviour
                 ShuffleAttacks();
                 decryptBar.DecryptBarReset();
                 i = 0;
+                return; //Exits the function instead instantly using the next attack in the queue. TODO: make this better
             }
         }
     }
