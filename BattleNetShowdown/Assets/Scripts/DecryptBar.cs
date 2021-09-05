@@ -75,7 +75,7 @@ public class DecryptBar : MonoBehaviour
             }
             //Change the color of the Decrypt bar
             decryptSlider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Random.ColorHSV(0.7f, 0.7f, glow, glow, 1f, 1f);
-            glow += (.003f * glowDirection);
+            glow += (.03f * glowDirection);
         }
     }
 
