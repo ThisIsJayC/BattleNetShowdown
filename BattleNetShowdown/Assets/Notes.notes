@@ -38,13 +38,14 @@ TODO:
     [ ] Magnetic - Pulls the character to the panel if they are idle 1 sec(?) and on an adjacent tile
     [ ] Teleport - Blink from one tile to the matching teleport tile
 [ ] HUD
-  [√] Decrypt bar
+  [√] DECRYPT bar
     [√] Fill up
       [√] Customizable fill speed
         [√] Faster fill up
         [√] Slower fill up
         [√] Instant fill up
     [√] Change animation once full
+    [√] Reset the DECRYPT bar color once reset
   [ ] Player HP bar (maybe also attach to the bottom of the player for consistency)
   [*] Clean up looks of Enemy HP bar
     [!] Figure out the sorting order for the enemy HP so that it's on top of the enemy sprite
