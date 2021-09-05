@@ -84,6 +84,7 @@ public class AttackQueue : MonoBehaviour
                 decryptBar.decryptSlider.value = 0;
                 Debug.Log("You're resetting your attack queue");
                 ShuffleAttacks();
+                decryptBar.DecryptBarReset();
                 i = 0;
             }
         }

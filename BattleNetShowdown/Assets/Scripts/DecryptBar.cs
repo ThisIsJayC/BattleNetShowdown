@@ -16,7 +16,7 @@ public class DecryptBar : MonoBehaviour
     private int glowDirection;
 
     //Set the length of each DECRYPT round in seconds below:
-    public const float originalRoundLength = 10f;
+    public const float originalRoundLength = 1f;
     public static float roundLength = originalRoundLength;
 
     private float decryptBarIncrement = roundLength;
@@ -77,32 +77,38 @@ public class DecryptBar : MonoBehaviour
             decryptSlider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Random.ColorHSV(0.7f, 0.7f, glow, glow, 1f, 1f);
             glow += (.003f * glowDirection);
         }
-
     }
 
-        // 2X Faster
-        void DecyptBar2XSpeed()
-        {
-            {
-                if(roundLength != 2 * originalRoundLength)
-                    roundLength = roundLength * 2;
-            }
-        }
+    public void DecryptBarReset()
+    {
+        decryptSlider.value = 0;
+        decryptSlider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = new Color(26/255, 255/255, 0);
+        fullbar = false;
+    }
 
-        // 1/2 Slower
-        void DecryptBarHalfSpeed()
+    // 2X Faster
+    void DecyptBar2XSpeed()
+    {
         {
-            {
-                if(roundLength != originalRoundLength / 2)
-                    roundLength = roundLength / 2;
-            }
+            if(roundLength != 2 * originalRoundLength)
+                roundLength = roundLength * 2;
         }
+    }
 
-        //Full bar
-        void DecryptBarFill()
+    // 1/2 Slower
+    void DecryptBarHalfSpeed()
+    {
         {
-            {
-                decryptSlider.value = 100;
-            }
+            if(roundLength != originalRoundLength / 2)
+                roundLength = roundLength / 2;
         }
+    }
+
+    //Full bar
+    void DecryptBarFill()
+    {
+        {
+            decryptSlider.value = 100;
+        }
+    }
 }
