@@ -7,7 +7,16 @@ public class AttackDB : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //From: JohnnyGo
+        var attacks = new List<Attack>();
+        attacks.Add(new Slash());
+        attacks.Add(new Lob());
+        attacks.Add(new Punch());
 
+        foreach(var attack in attacks)
+        {
+            attack.Execute();
+        }
     }
 
     // Update is called once per frame
@@ -31,4 +40,42 @@ public class AttackDB : MonoBehaviour
 
     */
 
+    //From JohnnyGo. This does nothing yet.
+    public abstract class Attack
+    {
+        public string Name { get; set; }
+        public int Damage { get; set; }
+        public Sprite AttackSprite { get; set; }
+
+        public virtual void Execute()
+        {
+            //default implementation of Execute
+            Debug.Log("Base");
+        }
+    }
+
+    public class Slash : Attack
+    {
+        public override void Execute()
+        {
+            //do something unique to Slash
+            Debug.Log("Slash");
+            base.Execute(); //call this if you want the default implementation to run
+        }
+    }
+
+    public class Lob : Attack
+    {
+        public override void Execute()
+        {
+            //do something unique to Lob
+            Debug.Log("Lob");
+            //don't call base.Execute if you don't want to run the code in the default implementation
+        }
+    }
+
+    public class Punch : Attack
+    {
+        //if you want punch to use the default implementation only there's no need to override Exectute here
+    }
 }
