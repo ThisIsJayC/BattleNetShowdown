@@ -9,6 +9,7 @@ public class AttackQueue : MonoBehaviour
     public Sprite lobAttackSprite, punchAttackSprite, slashAttackSprite;
 
     private PlayerAnimations playerAnimations;
+    private DecryptBar decryptBar;
 
     void Slash()
     {
@@ -39,6 +40,8 @@ public class AttackQueue : MonoBehaviour
 
         ShuffleAttacks();
 
+        decryptBar = FindObjectOfType<DecryptBar>();
+
         //FindObjectOfType<AttackScript>(Update().attackArrayOfSpritesay[0]);
         this.gameObject.GetComponent<SpriteRenderer>().sprite = lobAttackSprite;
         // Set the Attack Queue slot (orange square) to be the first item in the queue (attackArrayOfSpritesay[0])
@@ -59,6 +62,7 @@ public class AttackQueue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(decryptBar.decryptSlider.value);
         if(Input.GetKeyDown(KeyCode.RightAlt))
         {
             //this.gameObject.GetComponent<SpriteRenderer>().sprite = punchAttackSprite;
@@ -69,9 +73,16 @@ public class AttackQueue : MonoBehaviour
                 i++;
                 return; //Exits the function instead instantly resetting the queue. TODO: make this better
             }
-            if(i >= attackQueue.Count)
+
+            if(i >= attackQueue.Count && decryptBar.decryptSlider.value < 100)
             {
-                Debug.Log("You're empty. Reseteting to zero");
+                Debug.Log("You're out of attacks. Please wait until the DECRYPT bar is full");
+            }
+
+            if(i >= attackQueue.Count && decryptBar.decryptSlider.value >= 100)
+            {
+                decryptBar.decryptSlider.value = 0;
+                Debug.Log("You're resetting your attack queue");
                 ShuffleAttacks();
                 i = 0;
             }
