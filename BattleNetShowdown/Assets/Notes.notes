@@ -13,7 +13,10 @@ TODO:
   [ ] Animation
 [ ] Enemy
   [√] HP bar
-  [√] Fix rudimentary enemy AI
+  [ ] Enemy AI
+    [√] Fix rudimentary enemy AI
+    [√] Add random movement
+    [ ] Use attacks randomly
   [√] Update to Awin's sprite
   [√] Player attacks affect the enemy HP total
 [ ] Grid
