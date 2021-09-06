@@ -12,11 +12,12 @@ public class AttackQueue : MonoBehaviour
     private DecryptBar decryptBar;
     private AttackDB attackDB;
 
-    void Slash()
+    void Blast()
     {
-        Debug.Log("Slashing");
-        playerAnimations.Slash();
+        Debug.Log("Blasting");
+        playerAnimations.Blast();
     }
+
     void Lob()
     {
         Debug.Log("Lobbing");
@@ -28,6 +29,12 @@ public class AttackQueue : MonoBehaviour
         playerAnimations.Punch();
     }
 
+    void Slash()
+    {
+        Debug.Log("Slashing");
+        playerAnimations.Slash();
+    }
+
     List<Action> lst = new List<Action>();
     List<Action> attackQueue = new List<Action>();
     int i = 0, attackQueueMax = 6;
@@ -37,7 +44,8 @@ public class AttackQueue : MonoBehaviour
     {
         playerAnimations = FindObjectOfType<PlayerAnimations>();
 
-        lst.AddRange(new Action[] { Slash, Lob, Punch });
+        //lst.AddRange(new Action[] { Blast});
+        lst.AddRange(new Action[] { Blast, Lob, Punch, Slash });
 
         ShuffleAttacks();
 
