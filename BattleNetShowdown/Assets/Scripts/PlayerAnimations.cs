@@ -7,7 +7,7 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField]
     private float shotDistance;
 
-    public AudioSource hitSFX, missedThrow, punchSFX, shootSFX, slashSFX, throwSFX;
+    public AudioSource blastSFX, chargeSFX, hitSFX, missedThrow, punchSFX, shootSFX, slashSFX, throwSFX;
 
     public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
     //TODO: Load these from the Resources folder
@@ -29,6 +29,32 @@ public class PlayerAnimations : MonoBehaviour
         Debug.Log("Hit Something : " + hit.collider.name);
         hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         hitSFX.Play();
+    }
+
+    public void Blast()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
+        StartCoroutine(BlastWait(0.5f));
+
+        IEnumerator BlastWait(float s)
+        {
+            yield return new WaitForSeconds(s);
+
+            Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
+            blastSFX.Play();
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
+
+            if (hit)
+            {
+                Hit(hit);
+                enemyHP.TakeDamage(50);
+            }
+        }
+    }
+    public void Charge()
+    {
+        chargeSFX.Play();
+
     }
 
     public void Idle()
@@ -127,7 +153,7 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     //Player controls
-    void Update()
+    void Update() //TODO: Implement the new Input Manager
     {
         //Lob Attack
         if(Input.GetButtonDown("Fire1"))
