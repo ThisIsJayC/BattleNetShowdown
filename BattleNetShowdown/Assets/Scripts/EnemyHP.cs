@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     public TextMesh enemyHPTextbox;
+    public PlayerAnimations playerAnimations;
 
     public int enemyHP, maxHP, damage;
 
@@ -28,6 +29,11 @@ public class EnemyHP : MonoBehaviour
             {
                 Debug.Log("Enemy was destroyed");
                 SetEnemyStatus(true);
+
+                // GameObject.Find("Player Sprite").GetComponent<PlayerAnimations>().disabled;
+
+                //example: GameObject.Find("Cube").GetComponent<MoveObject>().enabled = false;
+
                 enemyExplosionSFX = GetComponent<AudioSource>();
                 enemyExplosionSFX.Play();
 
