@@ -11,11 +11,20 @@ public class PlayerMovementNew : MonoBehaviour
     void movePlayer(Vector3 direction)
     {
         Vector3 proposedNewPosition = transform.position + direction;
-         if(proposedNewPosition.y <= top && proposedNewPosition.y >= bottom && proposedNewPosition.x >= left && proposedNewPosition.x <= right)
-            {
-            transform.position += direction;
-            stepSound.Play();
-            }
+        //if(proposedNewPosition)
+        Debug.DrawRay(proposedNewPosition, transform.TransformDirection(Vector2.right) * 0.25f, Color.red, 1f);
+        //Debug.Log(GetTile(proposedNewPosition));
+        //Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
+        // RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
+        //Check the tag on the next square by using a raycast(?) to target the square. Then check the tag associtated
+        //with that square. If it's red, allow the movement.
+        // if (other.tag == "Red")
+
+        if(proposedNewPosition.y <= top && proposedNewPosition.y >= bottom && proposedNewPosition.x >= left && proposedNewPosition.x <= right)
+        {
+        transform.position += direction;
+        stepSound.Play();
+        }
     }
 
     void Update()

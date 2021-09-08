@@ -102,7 +102,7 @@ for(int i = 0; i < STAGE_HEIGHT; i++) {
         if(x < 3)
         {
             s.sprite = red;
-            s.tag = "Red"; //TODO: work on how to attache properties to the tiles
+            s.tag = "Red"; //TODO: work on how to attatch properties to the tiles
         }
         if(x >= 3)
         {
