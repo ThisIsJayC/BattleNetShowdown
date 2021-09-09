@@ -8,9 +8,79 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     public Sprite red, blue;
 
-    public float[,] Grid;
+    public SpriteRenderer[,] BattleGrid;
 
     public AudioSource battleMusic;
+
+
+    [SerializeField]
+    int vertical = 3, horizontal = 3;
+
+    //Start is called before the first frame update
+    void Start()
+    {
+        //Starts the Battle Theme
+        battleMusic.Play();
+
+        // vertical = (int)Camera.main.orthographicSize;
+        horizontal = vertical * (Screen.width / Screen.height);
+        int Columns = horizontal * 2;
+        int Rows = vertical * 2;
+        BattleGrid = new SpriteRenderer[Columns,Rows];
+
+        //Places tiles from top left to bottom right
+        //This is helpful for the bottom tiles to have skirts
+        for (int i = 0; i < Columns; i++)
+        {
+            for (int j = Rows; j >= 0; j--)
+            {
+                if(j < 3)
+                {
+                    SpawnTile(i, j);
+                }
+            }
+        }
+    }
+
+    private void SpawnTile(int x, int y)
+    {
+        string side = "";
+        if(x < 3)
+            side = "RED";
+        if(x >= 3)
+            side = "BLUE";
+
+        GameObject g = new GameObject(side + " X: " + (x + 1) + " Y: " + (y + 1));
+        g.transform.position = new Vector3(x - (horizontal - 0.5f), y - (vertical - 0.5f));
+
+        var s = g.AddComponent<SpriteRenderer>();
+
+        if(x < 3)
+        {
+            s.sprite = red;
+            s.tag = "Red"; //TODO: work on how to attatch properties to the tiles
+        }
+        if(x >= 3)
+        {
+            s.sprite = blue;
+            s.tag = "Blue";
+        }
+        BattleGrid[x , y] = s;
+        Debug.Log(BattleGrid[x,y]);
+    }
+
+    public void GetTag(int x, int y) //TODO: Remove.
+    {
+        Debug.Log("Test");
+    }
+
+}
+
+
+
+
+
+
 
 //TODO: Look into this some more. I think I already do this but maybe there's something different I can do?
 /* From Alwin.
@@ -61,52 +131,3 @@ for(int i = 0; i < STAGE_HEIGHT; i++) {
    }
 }
 */
-
-    [SerializeField]
-    int vertical = 3, horizontal = 3;
-
-    //Start is called before the first frame update
-    void Start()
-    {
-        //Starts the Battle Theme
-        battleMusic.Play();
-
-        // vertical = (int)Camera.main.orthographicSize;
-        horizontal = vertical * (Screen.width / Screen.height);
-        int Columns = horizontal * 2;
-        int Rows = vertical * 2;
-        Grid = new float[Columns,Rows];
-
-        //Places tiles from top left to bottom right
-        //This is helpful for the bottom tiles to have skirts
-
-        for (int i = 0; i < Columns; i++)
-        {
-            for (int j = Rows; j >= 0; j--)
-            {
-                if(j < 3)
-                {
-                    SpawnTile(i, j);
-                }
-            }
-        }
-    }
-
-    private void SpawnTile(int x, int y)
-    {
-        GameObject g = new GameObject("X: " + (x + 1) + "Y: " + (y + 1));
-        g.transform.position = new Vector3(x - (horizontal - 0.5f), y - (vertical - 0.5f));
-
-        var s = g.AddComponent<SpriteRenderer>();
-
-        if(x < 3)
-        {
-            s.sprite = red;
-            s.tag = "Red"; //TODO: work on how to attatch properties to the tiles
-        }
-        if(x >= 3)
-        {
-            s.sprite = blue;
-        }
-    }
-}
