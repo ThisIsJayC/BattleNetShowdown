@@ -12,34 +12,29 @@ public class PlayerMovementNew : MonoBehaviour
 
     void movePlayer(Vector2 direction)
     {
-        //New Tile Check method
-        Vector2 proposedNewPosition = (Vector2)transform.position + direction;
-        //if(proposedNewPosition)
-        Debug.DrawRay(proposedNewPosition, transform.TransformDirection(Vector2.right) * 0.25f, Color.red, 1f);
-
-
-        //This block of code should be obsolete soon. Not that it really did anything useful but
-        //I'm working on a better implementation.
-        //Debug.Log(GetTile(proposedNewPosition));
-        //Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
-        // RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
-        //Check the tag on the next square by using a raycast(?) to target the square. Then check the tag associtated
-        //with that square. If it's red, allow the movement.
-        // if (other.tag == "Red")
-
-
-        Debug.Log("X: " + (proposedNewPosition.x + 3.5) + " Y: " + (proposedNewPosition.y + 3.5));
-
-        //TODO: Do more testing on this.
-        //GetComponent<GridManager>().GetTag(0,0);
-
         /*
         The idea is to check the tag at the proposed new position. If the tag is red,
         then it should allow the player to step there. Otherwise, no movement will occur.
-        Currently I cannot get the tag of the sprite, or really get this function call
-        to work :[
         */
 
+        //New Tile Check method
+        Vector2 proposedNewPosition = (Vector2)transform.position + direction;
+        // Debug.Log("X: " + (proposedNewPosition.x + 3.5) + " Y: " + (proposedNewPosition.y + 3.5));
+
+        int x = (int)(proposedNewPosition.x + 3.5);
+        int y = (int)(proposedNewPosition.y + 3.5);
+
+        if(x > 0 && y > 0 && y < GameObject.Find("Grid").GetComponent<GridManager>().vertical + 1) //TODO: don't hardcode these boundaries.
+        {
+            if(GameObject.Find("Grid").GetComponent<GridManager>().GetTag(x, y) == "Red")
+            {
+                transform.position = (Vector2)transform.position + direction;
+                stepSound.Play();
+            }
+
+            if(GameObject.Find("Grid").GetComponent<GridManager>().GetTag(x, y) == "Blue")
+                Debug.Log("You can't move here idiot.");
+        }
 
         //Free movement
         // transform.position += direction;
@@ -47,11 +42,11 @@ public class PlayerMovementNew : MonoBehaviour
 
 
         //Old Box method
-        if(proposedNewPosition.y <= top && proposedNewPosition.y >= bottom && proposedNewPosition.x >= left && proposedNewPosition.x <= right)
-        {
-        transform.position = (Vector2)transform.position + direction;
-        stepSound.Play();
-        }
+        // if(proposedNewPosition.y <= top && proposedNewPosition.y >= bottom && proposedNewPosition.x >= left && proposedNewPosition.x <= right)
+        // {
+        // transform.position = (Vector2)transform.position + direction;
+        // stepSound.Play();
+        // }
     }
 
     void Update() //TODO: Implement the new Input Manager in Unity

@@ -14,7 +14,7 @@ public class GridManager : MonoBehaviour
 
 
     [SerializeField]
-    int vertical = 3, horizontal = 3;
+    public int vertical = 3, horizontal = 3;
 
     //Start is called before the first frame update
     void Start()
@@ -69,18 +69,15 @@ public class GridManager : MonoBehaviour
         Debug.Log(BattleGrid[x,y]);
     }
 
-    public void GetTag(int x, int y) //TODO: Remove.
+    public string GetTag(int x, int y)
     {
-        Debug.Log("Test");
+        return BattleGrid[x-1, y-1].tag;
+        //Debug.Log("Test");
+        //Debug.Log("You planned on stepping to " + BattleGrid[x-1, y-1] + ". That tag is: " + BattleGrid[x-1, y-1].tag);
+        // Debug.Log("Next step: " + BattleGrid[x-1, y-1]);
+        // Debug.Log("Next step: " + BattleGrid[x-1, y-1].tag);
     }
-
 }
-
-
-
-
-
-
 
 //TODO: Look into this some more. I think I already do this but maybe there's something different I can do?
 /* From Alwin.

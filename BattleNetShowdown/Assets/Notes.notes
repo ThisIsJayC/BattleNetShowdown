@@ -3,8 +3,8 @@
 
 TODO:
 [ ] Player Controller
-  [!] Movement
-    [ ] 2D array (Thanks Alwin)
+  [√] Movement
+    [√] 2D array (Thanks Alwin)
   [ ] Attacks
     [√] Fix Hitbox
     [√] Assign damage values to attacks
@@ -19,8 +19,8 @@ TODO:
     [ ] Use attacks randomly
   [√] Update to Awin's sprite
   [√] Player attacks affect the enemy HP total
-[ ] Grid
-  [!] Redesign Grid
+[√] Grid
+  [√] Redesign Grid
   [√] Render Grid
     [√] Prevent player from walking off tiles
     [√] Prevent player from walking on enemy tiles
