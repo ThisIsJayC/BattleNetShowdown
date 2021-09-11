@@ -27,18 +27,26 @@ public class EnemyAI : MonoBehaviour
         if(isMoving == false && isDead == false)
         {
 
-        //Wait 2 seconds and then move to the correct location
-        StartCoroutine(MoveWait(1.75f, targetLocation));
+            //Wait 2 seconds and then move to the correct location
+            StartCoroutine(MoveWait(1.75f, targetLocation));
 
-        IEnumerator MoveWait(float s, Vector3 targetLocation)
-        {
-            isMoving = true;
-            yield return new WaitForSeconds(s);
-            transform.position = targetLocation;
-            isMoving = false;
-        }
+            IEnumerator MoveWait(float s, Vector3 targetLocation)
+            {
+                isMoving = true;
+                yield return new WaitForSeconds(s);
+                transform.position = targetLocation;
+                isMoving = false;
 
-        targetLocation = new Vector3(Random.Range(0, 3) + 0.5f, Random.Range(-2, 1) - 0.5f, 0);
+                StartCoroutine(RandomAttack(0.5f));
+
+                IEnumerator RandomAttack(float s)
+                {
+                    yield return new WaitForSeconds(s);
+                    Debug.Log("The enemy attacked after " + s + " seconds."); //TODO: Actually call attack functions.
+                }
+            }
+
+            targetLocation = new Vector3(Random.Range(0, 3) + 0.5f, Random.Range(-2, 1) - 0.5f, 0);
         }
     }
 }
