@@ -33,6 +33,7 @@ public class EnemyHP : MonoBehaviour
                 //These next three lines are a hacky way to disable the players movements, attacks, and hitbox TODO: Do this better?
                 GameObject.Find("Player Sprite").GetComponent<PlayerAnimations>().enabled = false;
                 GameObject.Find("Player").GetComponent<PlayerMovementNew>().enabled = false;
+                //GameObject.Find("AttackQueue").GetComponent<AttackQueue>().enabled = false; //TODO: Disable Player's attack queue
                 GameObject.Find("Player Hitbox").SetActive(false);
 
                 enemyExplosionSFX = GetComponent<AudioSource>();
