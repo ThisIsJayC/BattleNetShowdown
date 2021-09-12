@@ -15,7 +15,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public Sprite punchAttackSprite;
 
-    [SerializeField]
+
     private EnemyHP enemyHP;
 
 

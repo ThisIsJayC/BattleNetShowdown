@@ -66,7 +66,7 @@ public class GridManager : MonoBehaviour
             s.tag = "Blue";
         }
         BattleGrid[x , y] = s;
-        Debug.Log(BattleGrid[x,y]);
+        // Debug.Log(BattleGrid[x,y]);
     }
 
     public string GetTag(int x, int y)

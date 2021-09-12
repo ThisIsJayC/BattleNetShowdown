@@ -16,12 +16,14 @@ public class EnemyAnimations : MonoBehaviour
     public Sprite punchAttackSprite;
 
     [SerializeField]
-    private EnemyHP enemyHP;
+    private EnemyHP enemyHP; //TODO: Update to Player HP
+
+    //TODO: Refactor damage system so so the HP script is character / object agnostic
 
 
     void Start()
     {
-        enemyHP = FindObjectOfType<EnemyHP>();
+        enemyHP = FindObjectOfType<EnemyHP>(); //TODO: Update to Player HP
     }
 
     void Hit(RaycastHit2D hit)
@@ -33,11 +35,12 @@ public class EnemyAnimations : MonoBehaviour
 
     public void Blast()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
+        // this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
         StartCoroutine(BlastWait(0.5f));
 
         IEnumerator BlastWait(float s)
         {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
             yield return new WaitForSeconds(s);
 
             Debug.DrawRay(transform.position + new Vector3(-1, -0.5f, 0), transform.TransformDirection(Vector2.left) * shotDistance, Color.red, .5f);
@@ -49,12 +52,12 @@ public class EnemyAnimations : MonoBehaviour
                 Hit(hit);
                 enemyHP.TakeDamage(50);
             }
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
         }
     }
     public void Charge()
     {
         chargeSFX.Play();
-
     }
 
     public void Idle()
@@ -90,7 +93,7 @@ public class EnemyAnimations : MonoBehaviour
             if (hit)
             {
                 Hit(hit);
-                enemyHP.TakeDamage(50);
+                // enemyHP.TakeDamage(50); //TODO: Update to Player HP
             }
             else
             {
@@ -112,7 +115,7 @@ public class EnemyAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
-            enemyHP.TakeDamage(20);
+            // enemyHP.TakeDamage(20); //TODO: Update to Player HP
             //Knocks enemy back 1 square
             if(hit.transform.position.x != 2.5) //If enemy is at the end of the square, it will not push them back off of the battle grid.
             {
@@ -132,7 +135,7 @@ public class EnemyAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
-            enemyHP.TakeDamage(10);
+            // enemyHP.TakeDamage(10); //TODO: Update to Player HP
         }
     }
 
@@ -148,7 +151,7 @@ public class EnemyAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit);
-            enemyHP.TakeDamage(100);
+            // enemyHP.TakeDamage(100); //TODO: Update to Player HP
         }
     }
 

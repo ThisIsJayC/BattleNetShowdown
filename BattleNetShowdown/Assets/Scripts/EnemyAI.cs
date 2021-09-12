@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     yield return new WaitForSeconds(s);
                     GameObject.Find("AlwinsBoxerGatorSprite").GetComponent<EnemyAnimations>().Blast(); //TODO: randomly choose an attack.
-                    Debug.Log("The enemy attacked after " + s + " seconds."); //TODO: Actually call attack functions.
+                    //Debug.Log("The enemy attacked after " + s + " seconds."); //TODO: Actually call attack functions.
                 }
             }
 

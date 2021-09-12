@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     public TextMesh enemyHPTextbox;
-    public PlayerAnimations playerAnimations;
 
     public int enemyHP, maxHP, damage;
 
@@ -18,7 +17,7 @@ public class EnemyHP : MonoBehaviour
         //Calculate damage
         enemyHP = enemyHP - damageTaken;
 
-        //Debug.Log(transform.parent.name + " took " + damageTaken + " damage");
+        Debug.Log(transform.parent.name + " took " + damageTaken + " damage");
 
         //Deletes the parent object when the HP reaches 0
         if (enemyHP <= 0)
@@ -27,14 +26,13 @@ public class EnemyHP : MonoBehaviour
             StartCoroutine(killEnemy());
             IEnumerator killEnemy ()
             {
-                Debug.Log("Enemy was destroyed");
+                Debug.Log("Object was destroyed");
                 SetEnemyStatus(true);
 
                 //These next three lines are a hacky way to disable the players movements, attacks, and hitbox TODO: Do this better?
                 GameObject.Find("Player Sprite").GetComponent<PlayerAnimations>().enabled = false;
                 GameObject.Find("Player").GetComponent<PlayerMovementNew>().enabled = false;
                 GameObject.Find("Attack Queue").SetActive(false);
-                GameObject.Find("Player Hitbox").SetActive(false);
 
                 enemyExplosionSFX = GetComponent<AudioSource>();
                 enemyExplosionSFX.Play();
