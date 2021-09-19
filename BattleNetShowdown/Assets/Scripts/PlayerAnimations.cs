@@ -28,14 +28,10 @@ public class PlayerAnimations : MonoBehaviour
 
     void Hit(RaycastHit2D hit, int damage)
     {
-        Debug.Log("Hit Something : " + hit.collider.name);
+        //Debug.Log("Hit Something : " + hit.collider.name);
         hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        hitSFX.Play();
-        //this is going to be ugly. I am not a very clean coder
-
-        // maaaaaybe?
-        hit.collider.GetComponent<ObjectHP>().TakeDamage(hit, damage);
-        objectHP.TakeDamage(hit, damage); //debugging TODO: remove
+        //hitSFX.Play();
+        objectHP.TakeDamage(hit, damage);
     }
 
     public void Blast()
