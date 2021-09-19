@@ -25,46 +25,54 @@ public class ObjectHP : MonoBehaviour
 
     public void TakeDamage(RaycastHit2D foo, int damage)  //Unity said yes, sort of
     {
+        //Debug.Log(GameObject.Find(string.Concat(foo.collider.name + " HP Text")).GetComponent<ObjectHP>().HP);
+        // HP = GameObject.Find(string.Concat(foo.collider.name + " HP Text")).GetComponent<ObjectHP>().HP;
         //Calculate damage
-        HP -= damage;
+        GameObject.Find(string.Concat(foo.collider.name + " HP Text")).GetComponent<ObjectHP>().HP -= damage;
+        //objectHPThatWasHit -= damage;
+        int objectHPThatWasHit = GameObject.Find(string.Concat(foo.collider.name + " HP Text")).GetComponent<ObjectHP>().HP;
+
         // object.setHP = object.getHP -= damageNumber  //tried doing this but was too sleepy. The above works
 
 
-        Debug.Log(foo.collider.name + " took " + damage + " damage");
+        //Debug.Log(foo.collider.name + " took " + damage + " damage");
 
         //Deletes the parent object when the HP reaches 0
-        if (HP <= 0)
+        if (objectHPThatWasHit <= 0)
         {
+            GameObject.Find(string.Concat(foo.collider.name + " HP Text")).GetComponent<ObjectHP>().HP = 0;
+
             transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            StartCoroutine(killEnemy());
-            IEnumerator killEnemy ()
+
+            StartCoroutine(destroyPlayer());
+            IEnumerator destroyPlayer()
             {
                 Debug.Log(foo.collider.name + " was destroyed");
                 SetEnemyStatus(true);
 
+                //TODO: make the routine for the object being destroyed name agnostic
                 //These next three lines are a hacky way to disable the players movements, attacks, and hitbox TODO: Do this better?
-                GameObject.Find(string.Concat(foo.collider.name + " Sprite")).GetComponent<PlayerAnimations>().enabled = false;
-                GameObject.Find(foo.collider.name).GetComponent<PlayerMovementNew>().enabled = false;
+                GameObject.Find(string.Concat("Player Sprite")).GetComponent<PlayerAnimations>().enabled = false;
+                GameObject.Find("Player").GetComponent<PlayerMovementNew>().enabled = false;
                 GameObject.Find("Attack Queue").SetActive(false);
 
-                //defeatExplosionSFX = GetComponent<AudioSource>();
+                // GameObject.Find(string.Concat(foo.collider.name + " Sprite")).GetComponent<PlayerAnimations>().enabled = false;
+                // GameObject.Find(foo.collider.name).GetComponent<PlayerMovementNew>().enabled = false;
+                // GameObject.Find("Attack Queue").SetActive(false);
+
                 defeatExplosionSFX.Play();
 
                 yield return new WaitForSeconds(defeatExplosionSFX.clip.length);
-                transform.parent.gameObject.SetActive(false);
+
+                GameObject.Find(foo.collider.name).SetActive(false);
+                //transform.parent.gameObject.SetActive(false);
                 //Destroy(transform.parent.gameObject); //or just delete it if you really are feeling spicy
             }
-            HP = 0;
         }
-        //hitSFX = GetComponent<AudioSource>();
         hitSFX.Play();
 
         //Debug.Log("Take Damage test");
         // Debug.Log("Object " + foo.collider.name + " took " + damage + " damage!");
-
-        // foo.SetHP(newHealth);
-
-        // defeatExplosionSFX.Play();
     }
 
     public void SetEnemyStatus(bool trueorfalse)
@@ -79,24 +87,7 @@ public class ObjectHP : MonoBehaviour
 
     public void Start()
     {
-        //Debug.Log("Test From ObjectHP");
-        // Debug.Log("Test. You better not throw a fucking error Unity. I swear");
-        // Debug.Log(HPTextbox.text);
-        // Debug.Log("This should say Alwin above this line.");
-        // Debug.Log("Initializing text box");
-        // HPTextbox.text = "foo";
-        // Debug.Log(HPTextbox.text);
-        // Debug.Log("foo should be above this line");
-        // Debug.Log(HP.ToString());
-        //SetHP(690);
-        //Debug.Log(HP.ToString());
-        // HPTextbox.text = GetHP().ToString(); //LUL it does not like this
-
         HPTextbox.text = HP.ToString();
-        // Debug.Log("HP should be 420");
-        // Debug.Log("HP is actually: " + HP);
-        //Debug.Log(HP.ToString());
-
     }
 
     void Update()
@@ -105,7 +96,6 @@ public class ObjectHP : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("healing 500 HP");
-            //GameObject.Find("Attack Queue").SetActive(false);
             Debug.Log(GameObject.Find("Player HP Text").GetComponent<ObjectHP>().HP);
             GameObject.Find("Player HP Text").GetComponent<ObjectHP>().HP +=500;
 //            GameObject.Find("Player").GetComponent<ObjectHP>().HP += 500;
