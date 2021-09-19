@@ -10,7 +10,7 @@ TODO:
     [√] Assign damage values to attacks
     [ ] Heal
     [ ] Add Charge
-    [ ] Disable Attack Queue once enemy is killed
+    [√] Disable Attack Queue once enemy is killed
   [ ] Animation
 [ ] Enemy
   [√] HP bar
@@ -50,7 +50,7 @@ TODO:
         [√] Instant fill up
     [√] Change animation once full
     [√] Reset the DECRYPT bar color once reset
-  [ ] Player HP bar (maybe also attach to the bottom of the player for consistency)
+  [√] Player HP bar (maybe also attach to the bottom of the player for consistency)
   [*] Clean up looks of Enemy HP bar
     [!] Figure out the sorting order for the enemy HP so that it's on top of the enemy sprite
 [ ] Alt Attacks
@@ -64,12 +64,6 @@ TODO:
     [√] Cycle through attacks
     [ ] Pull in sprite that matches the current held attack
   [!] Make an attack DB (Thanks Gav)
-
-
-
-
-
-
 
 
 
