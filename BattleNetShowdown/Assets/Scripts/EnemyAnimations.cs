@@ -17,20 +17,23 @@ public class EnemyAnimations : MonoBehaviour
 
     [SerializeField]
     private EnemyHP enemyHP; //TODO: Update to Player HP
+    public ObjectHP objectHP;
 
     //TODO: Refactor damage system so so the HP script is character / object agnostic
 
 
     void Start()
     {
-        enemyHP = FindObjectOfType<EnemyHP>(); //TODO: Update to Player HP
+        //objectHP = FindObjectOfType<ObjectHP>();
+        objectHP = FindObjectOfType<ObjectHP>();
+        //enemyHP = FindObjectOfType<EnemyHP>(); //TODO: Update to Player HP
     }
 
     void Hit(RaycastHit2D hit)
     {
         Debug.Log("Hit Something : " + hit.collider.name);
         hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        hitSFX.Play();
+        //hitSFX.Play();
     }
 
     public void Blast()
@@ -49,8 +52,10 @@ public class EnemyAnimations : MonoBehaviour
 
             if (hit)
             {
+
                 Hit(hit);
-                enemyHP.TakeDamage(50);
+                // enemyHP.TakeDamage(50);
+                objectHP.TakeDamage(hit, 50);
             }
             this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
         }

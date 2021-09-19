@@ -5,19 +5,26 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     //float leftMost = 0.5f, rightMost = 2.5f, topMost = -0.5f, bottomMost = -2.5f;
-    private EnemyHP enemyHP;
+    // private EnemyHP enemyHP;
+    private ObjectHP objectHP;
     private Vector3 targetLocation = new Vector3(0.5f, -1.5f, 0);
     public bool isDead = true, isMoving = false;
 
     // Update is called once per frame
     void Start()
     {
-        enemyHP = FindObjectOfType<EnemyHP>();
+        //enemyHP = FindObjectOfType<EnemyHP>();
+        objectHP = FindObjectOfType<ObjectHP>();
+        // objectHP = gameObject.GetComponent<ObjectHP>(); //I know this isn't right
+        //kindly fuck off for a minute pls
+
     }
 
     public void Update()
     {
-        isDead = enemyHP.GetEnemyStatus();
+        //isDead = enemyHP.GetEnemyStatus();
+        isDead = objectHP.GetEnemyStatus();
+
         if(isDead == true)
         {
             StopAllCoroutines(); // This stops the enemy AI from making a move after it's dead

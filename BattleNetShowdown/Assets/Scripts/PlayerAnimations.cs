@@ -17,18 +17,25 @@ public class PlayerAnimations : MonoBehaviour
 
 
     private EnemyHP enemyHP;
+    public ObjectHP objectHP;
 
 
     void Start()
     {
         enemyHP = FindObjectOfType<EnemyHP>();
+        objectHP = FindObjectOfType<ObjectHP>(); //because of this
     }
 
-    void Hit(RaycastHit2D hit)
+    void Hit(RaycastHit2D hit, int damage)
     {
         Debug.Log("Hit Something : " + hit.collider.name);
         hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         hitSFX.Play();
+        //this is going to be ugly. I am not a very clean coder
+
+        // maaaaaybe?
+        hit.collider.GetComponent<ObjectHP>().TakeDamage(hit, damage);
+        objectHP.TakeDamage(hit, damage); //debugging TODO: remove
     }
 
     public void Blast()
@@ -46,7 +53,7 @@ public class PlayerAnimations : MonoBehaviour
 
             if (hit)
             {
-                Hit(hit);
+                Hit(hit, 50);
                 enemyHP.TakeDamage(50);
             }
         }
@@ -89,8 +96,8 @@ public class PlayerAnimations : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.right), .5f);
             if (hit)
             {
-                Hit(hit);
-                enemyHP.TakeDamage(50);
+                Hit(hit, 50);
+                //enemyHP.TakeDamage(50);
             }
             else
             {
@@ -111,8 +118,8 @@ public class PlayerAnimations : MonoBehaviour
 
         if(hit)
         {
-            Hit(hit);
-            enemyHP.TakeDamage(20);
+            Hit(hit, 20);
+            //enemyHP.TakeDamage(20);
             //Knocks enemy back 1 square
             if(hit.transform.position.x != 2.5) //If enemy is at the end of the square, it will not push them back off of the battle grid.
             {
@@ -131,8 +138,8 @@ public class PlayerAnimations : MonoBehaviour
         //TODO: Add small hit particle animation
         if(hit)
         {
-            Hit(hit);
-            enemyHP.TakeDamage(10);
+            Hit(hit, 10);
+            // enemyHP.TakeDamage(10);
         }
     }
 
@@ -147,8 +154,8 @@ public class PlayerAnimations : MonoBehaviour
 
         if(hit)
         {
-            Hit(hit);
-            enemyHP.TakeDamage(100);
+            Hit(hit, 100);
+            //enemyHP.TakeDamage(100);
         }
     }
 
