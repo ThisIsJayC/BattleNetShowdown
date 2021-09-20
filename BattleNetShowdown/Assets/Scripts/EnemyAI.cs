@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
     //float leftMost = 0.5f, rightMost = 2.5f, topMost = -0.5f, bottomMost = -2.5f;
     // private EnemyHP enemyHP;
+    public EnemyAttackQueue enemyAttackQueue;
     private ObjectHP objectHP;
     private Vector3 targetLocation = new Vector3(0.5f, -1.5f, 0);
     public bool isDead = true, isMoving = false;
@@ -15,6 +16,7 @@ public class EnemyAI : MonoBehaviour
     {
         //enemyHP = FindObjectOfType<EnemyHP>();
         objectHP = FindObjectOfType<ObjectHP>();
+        enemyAttackQueue = FindObjectOfType<EnemyAttackQueue>();
         // objectHP = gameObject.GetComponent<ObjectHP>(); //I know this isn't right
         //kindly fuck off for a minute pls
 
@@ -49,7 +51,8 @@ public class EnemyAI : MonoBehaviour
                 IEnumerator RandomAttack(float s)
                 {
                     yield return new WaitForSeconds(s);
-                    GameObject.Find("Enemy Sprite").GetComponent<EnemyAnimations>().Blast(); //TODO: randomly choose an attack.
+                    enemyAttackQueue.EnemyAttack();
+                    //GameObject.Find("Enemy Sprite").GetComponent<EnemyAnimations>().Blast(); //TODO: randomly choose an attack.
                     //Debug.Log("The enemy attacked after " + s + " seconds."); //TODO: Actually call attack functions.
                 }
             }

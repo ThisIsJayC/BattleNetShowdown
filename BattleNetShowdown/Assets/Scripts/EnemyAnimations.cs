@@ -7,13 +7,13 @@ public class EnemyAnimations : MonoBehaviour
     [SerializeField]
     private float shotDistance;
 
-    public AudioSource blastSFX, chargeSFX, hitSFX, missedThrow, punchSFX, shootSFX, slashSFX, throwSFX;
+    //public AudioSource blastSFX, chargeSFX, hitSFX, missedThrow, punchSFX, shootSFX, slashSFX, throwSFX;
 
-    public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
+    //public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
     //TODO: Load these from the Resources folder
     //Maybe don't do this. It invloves making everything into a prefab.
 
-    public Sprite punchAttackSprite;
+    //public Sprite punchAttackSprite;
 
     [SerializeField]
     private EnemyHP enemyHP; //TODO: Update to Player HP
@@ -29,12 +29,12 @@ public class EnemyAnimations : MonoBehaviour
         //enemyHP = FindObjectOfType<EnemyHP>(); //TODO: Update to Player HP
     }
 
-    void Hit(RaycastHit2D hit)
+    void Hit(RaycastHit2D hit, int damage)
     {
         //Debug.Log("Hit Something : " + hit.collider.name);
         hit.transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         //hitSFX.Play();
-        objectHP.TakeDamage(hit, 50);
+        objectHP.TakeDamage(hit, damage);
     }
 
     public void Blast()
@@ -44,31 +44,30 @@ public class EnemyAnimations : MonoBehaviour
 
         IEnumerator BlastWait(float s)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
+            //this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
             yield return new WaitForSeconds(s);
 
             Debug.DrawRay(transform.position + new Vector3(-1, -0.5f, 0), transform.TransformDirection(Vector2.left) * shotDistance, Color.red, .5f);
-            blastSFX.Play();
+            //blastSFX.Play();
             RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-1, -0.5f, 0), transform.TransformDirection(Vector2.left), shotDistance);
 
             if (hit)
             {
-
-                Hit(hit);
+                Hit(hit, 50);
                 // enemyHP.TakeDamage(50);
                 //objectHP.TakeDamage(hit, 50);
             }
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+            //this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
         }
     }
     public void Charge()
     {
-        chargeSFX.Play();
+        //chargeSFX.Play();
     }
 
     public void Idle()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+        // this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
     }
     public void Lob()
     {
@@ -78,10 +77,10 @@ public class EnemyAnimations : MonoBehaviour
         //this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<SpriteRenderer>("Lob").sprite;
 
 
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
+        // this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
 
 
-        throwSFX.Play();
+        // throwSFX.Play();
 
         //Destination, 3 squares ahead
         Vector3 targetLocation = transform.position + new Vector3(2.75f, -0.5f, 0);
@@ -98,20 +97,20 @@ public class EnemyAnimations : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(targetLocation, transform.TransformDirection(Vector2.left), .5f);
             if (hit)
             {
-                Hit(hit);
+                Hit(hit, 70);
                 // enemyHP.TakeDamage(50); //TODO: Update to Player HP
             }
             else
             {
-                missedThrow.Play();
+                //missedThrow.Play();
             }
         }
     }
 
     public void Punch()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
-        punchSFX.Play();
+        // this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
+        //punchSFX.Play();
 
         //TODO: Add punch animation
         //TODO: call the punchAttackSprite 1 square ahead of the enemy, then destoy it after .5 seconds
@@ -120,7 +119,7 @@ public class EnemyAnimations : MonoBehaviour
 
         if(hit)
         {
-            Hit(hit);
+            Hit(hit, 80);
             // enemyHP.TakeDamage(20); //TODO: Update to Player HP
             //Knocks enemy back 1 square
             if(hit.transform.position.x != 2.5) //If enemy is at the end of the square, it will not push them back off of the battle grid.
@@ -132,23 +131,23 @@ public class EnemyAnimations : MonoBehaviour
 
     public void Shoot()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
+        // this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
         Debug.DrawRay(transform.position + new Vector3(-1, -0.5f, 0), transform.TransformDirection(Vector2.left) * shotDistance, Color.red, .5f);
-        shootSFX.Play();
+        //shootSFX.Play();
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-1, -0.5f, 0), transform.TransformDirection(Vector2.left), shotDistance);
 
         //TODO: Add small hit particle animation
         if(hit)
         {
-            Hit(hit);
+            Hit(hit, 10);
             // enemyHP.TakeDamage(10); //TODO: Update to Player HP
         }
     }
 
     public void Slash()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = slashSprite;
-        slashSFX.Play();
+        // this.gameObject.GetComponent<SpriteRenderer>().sprite = slashSprite;
+        //slashSFX.Play();
 
         //TODO: Add slash animation
         Debug.DrawRay(transform.position + new Vector3(-1, -1.5f, 0), transform.TransformDirection(Vector2.up) * 2, Color.red, .5f);
@@ -156,14 +155,8 @@ public class EnemyAnimations : MonoBehaviour
 
         if(hit)
         {
-            Hit(hit);
+            Hit(hit, 100);
             // enemyHP.TakeDamage(100); //TODO: Update to Player HP
         }
-    }
-
-    //Enemy controls
-    void Update()
-    {
-
     }
 }
