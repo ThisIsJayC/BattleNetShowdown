@@ -50,7 +50,7 @@ public class PlayerAnimations : MonoBehaviour
             if (hit)
             {
                 Hit(hit, 50);
-                enemyHP.TakeDamage(50);
+                //enemyHP.TakeDamage(50);
             }
         }
     }
