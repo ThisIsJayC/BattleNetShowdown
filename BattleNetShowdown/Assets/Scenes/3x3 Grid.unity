@@ -1254,6 +1254,7 @@ GameObject:
   - component: {fileID: 810211404}
   - component: {fileID: 810211406}
   - component: {fileID: 810211405}
+  - component: {fileID: 810211403}
   m_Layer: 3
   m_Name: Player Sprite
   m_TagString: Untagged
@@ -1449,6 +1450,7 @@ MonoBehaviour:
   punchSprite: {fileID: 21300000, guid: b966e6517f8fd534fb6b043cc2eac49f, type: 3}
   throwSprite: {fileID: 21300000, guid: 747469935cfea888bbaf0710902d146b, type: 3}
   punchAttackSprite: {fileID: 0}
+  animator: {fileID: 810211403}
   objectHP: {fileID: 0}
 --- !u!82 &810211399
 AudioSource:
@@ -1834,6 +1836,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &810211403
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810211394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 225cede4a3ddc93ac8a4163e50e57fb2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &810211404
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3155,20 +3176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDistance: 10
-  blastSFX: {fileID: 1779486989}
-  chargeSFX: {fileID: 0}
-  hitSFX: {fileID: 1779486990}
-  missedThrow: {fileID: 0}
-  punchSFX: {fileID: 0}
-  shootSFX: {fileID: 0}
-  slashSFX: {fileID: 0}
-  throwSFX: {fileID: 0}
-  idleSprite: {fileID: 21300000, guid: a4ec5349578619593b371be9c69fd63d, type: 3}
-  shootingSprite: {fileID: 21300000, guid: 4f20156ba2f8ea148a5b9005553229a7, type: 3}
-  slashSprite: {fileID: 0}
-  punchSprite: {fileID: 0}
-  throwSprite: {fileID: 0}
-  punchAttackSprite: {fileID: 0}
   enemyHP: {fileID: 0}
   objectHP: {fileID: 0}
 --- !u!82 &1779486989
@@ -3363,6 +3370,101 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1784554453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784554454}
+  - component: {fileID: 1784554456}
+  - component: {fileID: 1784554455}
+  m_Layer: 3
+  m_Name: Attack Queue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1784554454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784554453}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.3, y: 1, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2069539384}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1784554455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784554453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb514442212ddbd3a08c5f7aff29a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &1784554456
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784554453}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1033576645
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 2ef86704066f81e45ae5680897aafc00, type: 3}
+  m_Color: {r: 1, g: 0.58041036, b: 0.015686274, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2005767656
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,7 +3614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPTextbox: {fileID: 2005767660}
-  HP: 25
+  HP: 400
   defeatExplosionSFX: {fileID: 2005767662}
   hitSFX: {fileID: 2005767658}
   objectIsDead: 0
@@ -3815,6 +3917,7 @@ RectTransform:
   m_Children:
   - {fileID: 1779486986}
   - {fileID: 493861643}
+  - {fileID: 1784554454}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3835,5 +3938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cf324f64da4d690bb24fb88cc33edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAttackQueue: {fileID: 0}
   isDead: 0
   isMoving: 0

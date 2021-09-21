@@ -15,6 +15,8 @@ public class PlayerAnimations : MonoBehaviour
 
     public Sprite punchAttackSprite;
 
+    public Animator animator;
+
 
     private EnemyHP enemyHP;
     public ObjectHP objectHP;
@@ -62,7 +64,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public void Idle()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
     }
     public void Lob()
     {
@@ -104,7 +106,8 @@ public class PlayerAnimations : MonoBehaviour
 
     public void Punch()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
+        animator.SetTrigger("Punching");
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
         punchSFX.Play();
 
         //TODO: Add punch animation
@@ -122,11 +125,13 @@ public class PlayerAnimations : MonoBehaviour
                 hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
             }
         }
+        animator.SetTrigger("Idle");
     }
 
     public void Shoot()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
+        animator.SetTrigger("Shooting");
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
         Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
         shootSFX.Play();
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
@@ -137,6 +142,8 @@ public class PlayerAnimations : MonoBehaviour
             Hit(hit, 10);
             // enemyHP.TakeDamage(10);
         }
+        // animator.SetBool("isShooting", false);
+        animator.SetTrigger("Idle");
     }
 
     public void Slash()
