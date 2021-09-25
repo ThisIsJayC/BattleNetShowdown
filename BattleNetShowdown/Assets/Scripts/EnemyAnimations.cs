@@ -83,7 +83,7 @@ public class EnemyAnimations : MonoBehaviour
         // throwSFX.Play();
 
         //Destination, 3 squares ahead
-        Vector3 targetLocation = transform.position + new Vector3(2.75f, -0.5f, 0);
+        Vector3 targetLocation = transform.position + new Vector3(-2.75f, -0.5f, 0);
 
         //Hits an enemy 3 squares away, after a 1 second delay
         StartCoroutine(LobWait(1.0f, targetLocation));
@@ -114,7 +114,7 @@ public class EnemyAnimations : MonoBehaviour
 
         //TODO: Add punch animation
         //TODO: call the punchAttackSprite 1 square ahead of the enemy, then destoy it after .5 seconds
-        Debug.DrawRay(transform.position + new Vector3(0.75f, -0.5f, 0), transform.TransformDirection(Vector2.left) * .5f, Color.red, .5f);
+        Debug.DrawRay(transform.position + new Vector3(-0.75f, -0.5f, 0), transform.TransformDirection(Vector2.left) * .5f, Color.red, .5f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-1, -0.5f, 0), transform.TransformDirection(Vector2.left), .45f);
 
         if(hit)
