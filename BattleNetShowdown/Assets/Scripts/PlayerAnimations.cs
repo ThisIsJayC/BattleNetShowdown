@@ -7,25 +7,19 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField]
     private float shotDistance;
 
-    public AudioSource blastSFX, chargeSFX, hitSFX, missedThrow, punchSFX, shootSFX, slashSFX, throwSFX;
-
-    public Sprite idleSprite, shootingSprite, slashSprite, punchSprite, throwSprite;
-    //TODO: Load these from the Resources folder
-    //Maybe don't do this. It invloves making everything into a prefab.
+    public AudioSource blastSFX, chargeSFX, missedThrow, punchSFX, shootSFX, slashSFX, throwSFX;
 
     public Sprite punchAttackSprite;
 
     public Animator animator;
 
-
     private EnemyHP enemyHP;
     public ObjectHP objectHP;
-
 
     void Start()
     {
         enemyHP = FindObjectOfType<EnemyHP>();
-        objectHP = FindObjectOfType<ObjectHP>(); //because of this
+        objectHP = FindObjectOfType<ObjectHP>();
     }
 
     void Hit(RaycastHit2D hit, int damage)

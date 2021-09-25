@@ -52,7 +52,7 @@ public class AttackQueue : MonoBehaviour
         decryptBar = FindObjectOfType<DecryptBar>();
         attackDB = FindObjectOfType<AttackDB>();
         //FindObjectOfType<AttackScript>(Update().attackArrayOfSpritesay[0]);
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = lobAttackSprite;
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = lobAttackSprite;
         // Set the Attack Queue slot (orange square) to be the first item in the queue (attackArrayOfSpritesay[0])
         // Once the forwards button is pressed, set the next attack sprite (attackArrayOfSpritesay[1])
         //attackDB.Slash();
@@ -60,7 +60,7 @@ public class AttackQueue : MonoBehaviour
 
     void ShuffleAttacks()
     {
-        int randomNumberOfAttacks = UnityEngine.Random.Range(0, attackQueueMax);
+        int randomNumberOfAttacks = UnityEngine.Random.Range(3, attackQueueMax);
         attackQueue.Clear();
         for(int j = 0; j < randomNumberOfAttacks; j++)
         {
