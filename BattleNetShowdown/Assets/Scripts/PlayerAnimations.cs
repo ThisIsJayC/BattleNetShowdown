@@ -38,9 +38,10 @@ public class PlayerAnimations : MonoBehaviour
 
     public void Blast()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
-        StartCoroutine(BlastWait(0.5f));
+        animator.SetTrigger("Shooting");
+        animator.SetBool("canAttack", false); //TODO: fix this so you can't trigger another attack until the animation is done
 
+        StartCoroutine(BlastWait(0.5f));
         IEnumerator BlastWait(float s)
         {
             yield return new WaitForSeconds(s);
@@ -55,6 +56,8 @@ public class PlayerAnimations : MonoBehaviour
                 //enemyHP.TakeDamage(50);
             }
         }
+
+        animator.SetTrigger("Idle");
     }
     public void Charge()
     {
@@ -64,18 +67,14 @@ public class PlayerAnimations : MonoBehaviour
 
     public void Idle()
     {
+        animator.SetBool("canAttack", true);
         //this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
     }
     public void Lob()
     {
+        animator.SetTrigger("Lobbing");
+        animator.SetBool("canAttack", false); //TODO: fix this so you can't trigger another attack until the animation is done
         //TODO: Add throw animation
-
-        //New method. Requires a prefab
-        //this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<SpriteRenderer>("Lob").sprite;
-
-
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = throwSprite;
-
 
         throwSFX.Play();
 
@@ -84,7 +83,6 @@ public class PlayerAnimations : MonoBehaviour
 
         //Hits an enemy 3 squares away, after a 1 second delay
         StartCoroutine(LobWait(1.0f, targetLocation));
-
         IEnumerator LobWait(float s, Vector3 targetLocation)
         {
             yield return new WaitForSeconds(s);
@@ -102,12 +100,15 @@ public class PlayerAnimations : MonoBehaviour
                 missedThrow.Play();
             }
         }
+
+        animator.SetTrigger("Idle");
     }
 
     public void Punch()
     {
         animator.SetTrigger("Punching");
-        //this.gameObject.GetComponent<SpriteRenderer>().sprite = punchSprite;
+        animator.SetBool("canAttack", false); //TODO: fix this so you can't trigger another attack until the animation is done
+
         punchSFX.Play();
 
         //TODO: Add punch animation
@@ -118,38 +119,43 @@ public class PlayerAnimations : MonoBehaviour
         if(hit)
         {
             Hit(hit, 20);
-            //enemyHP.TakeDamage(20);
+
             //Knocks enemy back 1 square
+            //TODO: Update to have the enemy / object hit check if there is a valid tile behind it
             if(hit.transform.position.x != 2.5) //If enemy is at the end of the square, it will not push them back off of the battle grid.
             {
                 hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
             }
         }
+
         animator.SetTrigger("Idle");
     }
 
     public void Shoot()
     {
         animator.SetTrigger("Shooting");
-        //this.gameObject.GetComponent<SpriteRenderer>().sprite = shootingSprite;
-        Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
+        animator.SetBool("canAttack", false); //TODO: fix this so you can't trigger another attack until the animation is done
+
         shootSFX.Play();
+
+        Debug.DrawRay(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right) * shotDistance, Color.red, .5f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1, -0.5f, 0), transform.TransformDirection(Vector2.right), shotDistance);
 
         //TODO: Add small hit particle animation
         if(hit)
         {
             Hit(hit, 10);
-            // enemyHP.TakeDamage(10);
         }
-        // animator.SetBool("isShooting", false);
+
         animator.SetTrigger("Idle");
     }
 
     public void Slash()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = slashSprite;
-        slashSFX.Play();
+        animator.SetTrigger("Slashing");
+        animator.SetBool("canAttack", false); //TODO: fix this so you can't trigger another attack until the animation is done
+
+        //slashSFX.Play();
 
         //TODO: Add slash animation
         Debug.DrawRay(transform.position + new Vector3(1, -1.5f, 0), transform.TransformDirection(Vector2.up) * 2, Color.red, .5f);
@@ -160,6 +166,8 @@ public class PlayerAnimations : MonoBehaviour
             Hit(hit, 100);
             //enemyHP.TakeDamage(100);
         }
+
+        animator.SetTrigger("Idle");
     }
 
     //Player controls
