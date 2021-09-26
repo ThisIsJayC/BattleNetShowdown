@@ -11,8 +11,8 @@ TODO:
     [ ] Heal
     [ ] Add Charge
     [√] Disable Attack Queue once enemy is killed
-  [ ] Animation
-[ ] Enemy
+  [√] Animation
+[√] Enemy
   [√] HP bar
   [√] Enemy AI
     [√] Fix rudimentary enemy AI

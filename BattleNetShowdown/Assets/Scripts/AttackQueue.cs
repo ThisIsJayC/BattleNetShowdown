@@ -10,7 +10,7 @@ public class AttackQueue : MonoBehaviour
 
     private PlayerAnimations playerAnimations;
     private DecryptBar decryptBar;
-    private AttackDB attackDB;
+    public AttackDB attackDB;
 
     void Blast()
     {

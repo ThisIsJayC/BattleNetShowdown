@@ -24,7 +24,7 @@ public class AttackDB : MonoBehaviour
     {
 
     }
-
+    */
     //From Alwin: Basically, enums are like basic classes, you can save variables there and functions that change the value of stored variables. It is like a mini class specifically made to store variables you use often, so later on you can call the enum and write enum.Slash and it throws the value of Slash stored in the enum
 
     //Will need to make an array / structure that holds this information
@@ -39,7 +39,7 @@ public class AttackDB : MonoBehaviour
     5                   Slash               SlashSprite     100     Slash()
 
     */
-
+    /*
     //From JohnnyGo. This does nothing yet.
     public abstract class Attack
     {
@@ -78,4 +78,5 @@ public class AttackDB : MonoBehaviour
     {
         //if you want punch to use the default implementation only there's no need to override Exectute here
     }
+    */
 }
