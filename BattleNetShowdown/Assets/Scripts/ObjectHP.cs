@@ -93,14 +93,14 @@ public class ObjectHP : MonoBehaviour
     void Update()
     {
         HPTextbox.text = HP.ToString();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("healing 500 HP");
-            Debug.Log(GameObject.Find("Player HP Text").GetComponent<ObjectHP>().HP);
-            GameObject.Find("Player HP Text").GetComponent<ObjectHP>().HP +=500;
-//            GameObject.Find("Player").GetComponent<ObjectHP>().HP += 500;
-            Debug.Log("Player healed 500 HP");
-        }
+        // if(Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     Debug.Log("healing 500 HP");
+        //     Debug.Log(GameObject.Find("Player HP Text").GetComponent<ObjectHP>().HP);
+        //     GameObject.Find("Player HP Text").GetComponent<ObjectHP>().HP +=500;
+        //     // GameObject.Find("Player").GetComponent<ObjectHP>().HP += 500;
+        //     Debug.Log("Player healed 500 HP");
+        // }
     }
 
 
