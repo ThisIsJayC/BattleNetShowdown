@@ -259,7 +259,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42491645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
@@ -268,7 +268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -53.4, y: 36.8}
+  m_AnchoredPosition: {x: -53.4, y: 36.79997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &42491647
@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f0102353a9fba42ae58166ac82cd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 11400000, guid: 6e75e60611fee4e288ad417f0223401b, type: 2}
+  attack: {fileID: 11400000, guid: a6496df7d510f9bf586802421d831f34, type: 2}
   attackName: {fileID: 836673649}
   attackIcon: {fileID: 42491647}
   attackDamage: {fileID: 1659502228}
@@ -2240,7 +2240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2464,6 +2464,7 @@ GameObject:
   - component: {fileID: 1306828818}
   - component: {fileID: 1306828819}
   - component: {fileID: 1306828820}
+  - component: {fileID: 1306828821}
   m_Layer: 3
   m_Name: Attack Queue
   m_TagString: Untagged
@@ -2549,10 +2550,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acbff8ba2a060a4fafd56305162fbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobAttackSprite: {fileID: 21300000, guid: 9f88e39e75c9d7ce2b3eceacb1b1cd06, type: 3}
+  lobAttackSprite: {fileID: 0}
   punchAttackSprite: {fileID: 21300000, guid: 9be28bd7d7a972d78971b70dfcacff05, type: 3}
   slashAttackSprite: {fileID: 21300000, guid: f8bee8ce1107b3da9b170f5aabe77fb0, type: 3}
   attackDB: {fileID: 0}
+--- !u!114 &1306828821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306828817}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f0102353a9fba42ae58166ac82cd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 0}
+  attackName: {fileID: 836673649}
+  attackIcon: {fileID: 42491647}
+  attackDamage: {fileID: 1659502228}
 --- !u!1 &1389079739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,7 +3173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3329,10 +3346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f0102353a9fba42ae58166ac82cd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 0}
-  attackName: {fileID: 0}
-  attackIcon: {fileID: 0}
-  attackDamage: {fileID: 0}
+  attack: {fileID: 11400000, guid: 6e75e60611fee4e288ad417f0223401b, type: 2}
+  attackName: {fileID: 836673649}
+  attackIcon: {fileID: 42491647}
+  attackDamage: {fileID: 1659502228}
 --- !u!1 &1779486985
 GameObject:
   m_ObjectHideFlags: 0

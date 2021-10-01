@@ -52,7 +52,10 @@ public class AttackQueue : MonoBehaviour
         decryptBar = FindObjectOfType<DecryptBar>();
         attackDB = FindObjectOfType<AttackDB>();
         //FindObjectOfType<AttackScript>(Update().attackArrayOfSpritesay[0]);
-        //this.gameObject.GetComponent<SpriteRenderer>().sprite = lobAttackSprite;
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = punchAttackSprite;
+
+
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = GetComponent<AttackDisplay>().attackIcon.sprite;
         // Set the Attack Queue slot (orange square) to be the first item in the queue (attackArrayOfSpritesay[0])
         // Once the forwards button is pressed, set the next attack sprite (attackArrayOfSpritesay[1])
         //attackDB.Slash();
@@ -73,6 +76,7 @@ public class AttackQueue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = GetComponent<AttackDisplay>().attackIcon.sprite;
         //Debug.Log(decryptBar.decryptSlider.value);
         if(Input.GetKeyDown(KeyCode.RightAlt))
         {
