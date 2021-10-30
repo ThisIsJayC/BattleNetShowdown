@@ -14,6 +14,11 @@ public class AttackDisplay : MonoBehaviour
 
     public Text attackDamage;
 
+    void Start()
+    {
+        attack = (Attack)AssetDatabase.LoadAssetAtPath("Assets/Attacks/Punch.asset", typeof(Attack));
+        UpdateAttack();
+    }
     void UpdateAttack()
     {
         attackName.text = attack.nameOfAttack;

@@ -44,7 +44,7 @@ public class AttackQueue : MonoBehaviour
     {
         playerAnimations = FindObjectOfType<PlayerAnimations>();
 
-        //lst.AddRange(new Action[] { Blast});
+        //lst.AddRange(new Action[] { Blast });
         lst.AddRange(new Action[] { Blast, Lob, Punch, Slash });
 
         ShuffleAttacks();
