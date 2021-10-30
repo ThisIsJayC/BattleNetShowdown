@@ -14,7 +14,7 @@ public class Attack : ScriptableObject
 
     public int damage;
 
-    public string attackCall;
+    public string attackCall; //Does nothing so far
 
     public void Print()
     {

@@ -50,17 +50,16 @@ public class PlayerAnimations : MonoBehaviour
                 //enemyHP.TakeDamage(50);
             }
         }
-
-        animator.SetTrigger("Idle");
+        Idle();
     }
     public void Charge()
     {
         chargeSFX.Play();
-
     }
 
     public void Idle()
     {
+        animator.SetTrigger("Idle");
         animator.SetBool("canAttack", true);
         //this.gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
     }
@@ -94,8 +93,7 @@ public class PlayerAnimations : MonoBehaviour
                 missedThrow.Play();
             }
         }
-
-        animator.SetTrigger("Idle");
+        Idle();
     }
 
     public void Punch()
@@ -121,8 +119,7 @@ public class PlayerAnimations : MonoBehaviour
                 hit.transform.position = hit.transform.position + new Vector3 (1, 0, 0);
             }
         }
-
-        animator.SetTrigger("Idle");
+        Idle();
     }
 
     public void Shoot()
@@ -140,8 +137,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             Hit(hit, 10);
         }
-
-        animator.SetTrigger("Idle");
+        Idle();
     }
 
     public void Slash()
@@ -160,8 +156,7 @@ public class PlayerAnimations : MonoBehaviour
             Hit(hit, 100);
             //enemyHP.TakeDamage(100);
         }
-
-        animator.SetTrigger("Idle");
+        Idle();
     }
 
     //Player controls
